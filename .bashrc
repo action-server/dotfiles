@@ -145,3 +145,19 @@ ex ()
 shopt -s autocd
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="cd*:ls*"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/action/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/action/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/action/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/action/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Workspace
-alias w1='[[ -d ~/workspace/abschlussprojekt-zikade3301/ ]] && cd ~/workspace/abschlussprojekt-zikade3301/'
-alias w2='[[ -d /run/media/action/sd/Workspace/ ]] && cd /run/media/action/sd/Workspace/'
-alias w3='[[ -d /run/media/action/sd/Workspace/java/Main/src/ ]] && cd /run/media/action/sd/Workspace/java/Main/src/'
+alias w='[[ -d /run/media/action/sd/Workspace/ ]] && cd /run/media/action/sd/Workspace/'
+alias whc='[[ -d /run/media/action/sd/Workspace/html_css ]] && cd /run/media/action/sd/Workspace/html_css'
+alias wj='[[ -d /run/media/action/sd/Workspace/java/ ]] && cd /run/media/action/sd/Workspace/java/'
 alias d='[[ -d ~/Desktop/ ]] && cd ~/Desktop/'
 alias sd='[[ -d /run/media/action/sd/ ]] && cd /run/media/action/sd/'
 alias balias='[[ -f ~/.bash_aliases ]] && nano ~/.bash_aliases && . ~/.bash_aliases'
@@ -47,8 +47,8 @@ alias dkcd='docker-compose down'
 alias dkcr='docker-compose restart'
 
 # Miniconda
-#alias compla='conda activate && spyder'
-#alias compana='conda activate && jupyter notebook'
+alias compla='conda activate && spyder'
+alias compana='conda activate && jupyter notebook'
 
 # Apt
 #alias ssi='sudo snap install'
