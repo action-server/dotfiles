@@ -143,8 +143,6 @@ ex ()
 
 # Commands
 shopt -s autocd
-export HISTCONTROL=ignoreboth
-export HISTIGNORE="cd*:ls*"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

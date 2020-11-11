@@ -6,7 +6,8 @@ alias whc='[[ -d /run/media/action/sd/Workspace/html_css ]] && cd /run/media/act
 alias wj='[[ -d /run/media/action/sd/Workspace/java/ ]] && cd /run/media/action/sd/Workspace/java/'
 alias d='[[ -d ~/Desktop/ ]] && cd ~/Desktop/'
 alias sd='[[ -d /run/media/action/sd/ ]] && cd /run/media/action/sd/'
-alias balias='[[ -f ~/.bash_aliases ]] && nano ~/.bash_aliases && . ~/.bash_aliases'
+alias balias='[[ -f ~/.bash_aliases ]] && vim ~/.bash_aliases && . ~/.bash_aliases'
+alias bs='[[ -d /run/media/action/sd/Semester_V/BS/ ]] && cd /run/media/action/sd/Semester_V/BS/'
 
 # System
 alias la='ls -A'
@@ -18,8 +19,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 
 # tools
-alias t='tree'
-alias g='gedit'
 alias copy='xclip -selection c'
 
 # Pacman
@@ -27,7 +26,6 @@ alias paci='sudo pacman -S'
 alias pacr='sudo pacman -Rsn'
 alias pacs='pacman -Ss'
 alias pacu='sudo pacman -Syu'
-alias pacuu='sudo pacman -Syyu'
 
 # Git
 alias gits='git status'
@@ -47,15 +45,10 @@ alias dkcd='docker-compose down'
 alias dkcr='docker-compose restart'
 
 # Miniconda
-alias compla='conda activate && spyder'
 alias compana='conda activate && jupyter notebook'
 
 # Apt
-#alias ssi='sudo snap install'
 #alias sai='sudo apt install'
 #alias sar='sudo apt remove'
 #alias saar='sudo apt autoremove'
 #alias uu='sudo apt update && sudo apt upgrade && sudo apt autoremove'
-
-# WFI
-alias set-wifi='sudo modprobe -r ath9k && sudo modprobe ath9k nohwcrypt=1'
