@@ -1,7 +1,10 @@
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-#Mein
+# Check if .bashrc is available and source it.
 [ -z ~/.bashrc ] && source ~/.bashrc
+
+# Map caps key to escape key.
+setxkbmap -option "caps:escape"

@@ -6,8 +6,9 @@ alias whc='[[ -d /run/media/action/sd/Workspace/html_css ]] && cd /run/media/act
 alias wj='[[ -d /run/media/action/sd/Workspace/java/ ]] && cd /run/media/action/sd/Workspace/java/'
 alias d='[[ -d ~/Desktop/ ]] && cd ~/Desktop/'
 alias sd='[[ -d /run/media/action/sd/ ]] && cd /run/media/action/sd/'
-alias balias='[[ -f ~/.bash_aliases ]] && vim ~/.bash_aliases && . ~/.bash_aliases'
+alias balias='[[ -f ~/.bash_aliases ]] && $EDITOR ~/.bash_aliases && . ~/.bash_aliases'
 alias bs='[[ -d /run/media/action/sd/Semester_V/BS/ ]] && cd /run/media/action/sd/Semester_V/BS/'
+alias vimrc='[[ -f ~/.vimrc ]] && $EDITOR ~/.vimrc'
 
 # System
 alias la='ls -A'
