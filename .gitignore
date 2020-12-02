@@ -1,0 +1,8 @@
+*
+!.bashrc
+!.bash_aliases
+!.bash_profile
+!.profile
+!.vimrc
+!.gradle/gradle.properties
+!.gitignore
