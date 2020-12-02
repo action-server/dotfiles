@@ -45,11 +45,8 @@ alias dkcu='docker-compose up'
 alias dkcd='docker-compose down'
 alias dkcr='docker-compose restart'
 
-# Miniconda
-alias compana='conda activate && jupyter notebook'
-
 # Apt
-#alias sai='sudo apt install'
-#alias sar='sudo apt remove'
-#alias saar='sudo apt autoremove'
-#alias uu='sudo apt update && sudo apt upgrade && sudo apt autoremove'
+# alias sai='sudo apt install'
+# alias sar='sudo apt remove'
+# alias saar='sudo apt autoremove'
+# alias uu='sudo apt update && sudo apt upgrade && sudo apt autoremove'
