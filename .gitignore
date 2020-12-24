@@ -6,3 +6,8 @@
 !.vimrc
 !.gradle/gradle.properties
 !.gitignore
+!.config/picom/picom.conf
+!.config/i3/config
+!.config/i3status/config
+!.config/nvim/init.vim
+

@@ -1,32 +1,20 @@
 #!/bin/bash
 
 # Workspace
-alias w='[[ -d /run/media/action/sd/Workspace/ ]] && cd /run/media/action/sd/Workspace/'
-alias whc='[[ -d /run/media/action/sd/Workspace/html_css ]] && cd /run/media/action/sd/Workspace/html_css'
-alias wj='[[ -d /run/media/action/sd/Workspace/java/ ]] && cd /run/media/action/sd/Workspace/java/'
 alias d='[[ -d ~/Desktop/ ]] && cd ~/Desktop/'
-alias sd='[[ -d /run/media/action/sd/ ]] && cd /run/media/action/sd/'
+# alias sd='[[ -d /run/media/action/sd/ ]] && cd /run/media/action/sd/'
 alias balias='[[ -f ~/.bash_aliases ]] && $EDITOR ~/.bash_aliases && . ~/.bash_aliases'
-alias bs='[[ -d /run/media/action/sd/Semester_V/BS/ ]] && cd /run/media/action/sd/Semester_V/BS/'
-alias vimrc='[[ -f ~/.vimrc ]] && $EDITOR ~/.vimrc'
 
 # System
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 alias la='ls -A'
 alias l='ls -ACF'
-alias ll='la -alF'
-alias c="clear && clear"
-alias mv='mv -i'
-alias rm='rm -i'
-alias cp='cp -i'
+alias ll='ls -alF'
 
 # tools
-alias copy='xclip -selection c'
-
-# Pacman
-alias paci='sudo pacman -S'
-alias pacr='sudo pacman -Rsn'
-alias pacs='pacman -Ss'
-alias pacu='sudo pacman -Syu'
+alias copy='xclip -selection clipboard'
 
 # Git
 alias gits='git status'
@@ -44,6 +32,12 @@ alias dkrmi='docker rmi'
 alias dkcu='docker-compose up'
 alias dkcd='docker-compose down'
 alias dkcr='docker-compose restart'
+
+# Pacman
+alias paci='sudo pacman -S'
+alias pacr='sudo pacman -Rsn'
+alias pacs='pacman -Ss'
+alias pacu='sudo pacman -Syu'
 
 # Apt
 # alias sai='sudo apt install'
