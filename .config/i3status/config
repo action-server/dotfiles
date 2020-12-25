@@ -1,0 +1,54 @@
+general {
+        colors = true
+        interval = 5
+}
+
+order += "memory"
+order += "cpu_temperature 0"
+order += "disk /"
+order += "wireless _first_"
+order += "volume master"
+order += "battery all"
+order += "tztime local"
+
+memory {
+        format = " %available"
+        threshold_degraded = "1G"
+        threshold_critical = "500M"
+}
+
+cpu_temperature 0 {
+        format = "%degrees糖"
+        max_threshold = "75"
+}
+
+disk "/" {
+        format = " %avail"
+        threshold_type = "bytes_avail"
+        low_threshold = 5
+}
+
+wireless _first_ {
+        format_up = "直%quality"
+        format_down = "Disconnected"
+}
+
+volume master {
+        format = "墳 %volume"
+        format_muted = "婢 (%volume)"
+}
+
+battery all {
+        format = "%status %percentage"
+        last_full_capacity = true
+        integer_battery_capacity = true
+        status_chr = ""
+        status_bat = "" 
+        status_full = ""
+        threshold_type = "percentage"
+        low_threshold = "15"
+}
+
+tztime local {
+        format = "%H:%M"
+}
