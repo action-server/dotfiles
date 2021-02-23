@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# Shortcut
+alias \
+  v='nvim' \
+  vim='nvim' \
+  t='tree' \
+  copy='xclip -selection clipboard' \
+  vpnc='sudo protonvpn connect' \
+  vpnr='sudo protonvpn reconnect' \
+  vpns='protonvpn status' \
+  vpnd='sudo protonvpn disconnect' \
+  myip='curl ipinfo.io/ip' \
+  del='trash-put' \
+  cpu='cpupower frequency-info' \
+  powersave='sudo cpupower frequency-set -g powersave -d 800MHz -u 1.5GHz' \
+  performance='sudo cpupower frequency-set -g performance -d 800MHz -u 2.7GHz' \
+  ondemand='sudo cpupower frequency-set -g ondemand -d 800MHz -u 2.7GHz' \
+  conservative='sudo cpupower frequency-set -g conservative -d 800MHz -u 2.7GHz' \
+  xo='nohup xdg-open'
+
+# Fix
+alias \
+  mpv='mpv --hwdec=auto'
+
+# Workspace
+ALIASRC=$XDG_CONFIG_HOME/shell/aliasrc
+alias \
+  balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
+  uni='[ -d $HOME/studyspace/uni ] && cd $HOME/studyspace/uni'
+
+# System
+alias \
+  ls='ls --color=auto' \
+  grep='grep --color=auto' \
+  diff='diff --color=auto' \
+  la='ls -A' \
+  l='ls -ACF' \
+  ll='ls -alhF'
+
+# Git
+alias \
+  gits='git status' \
+  gitl='git log' \
+  gitch='git checkout' \
+  gitb='git branch' \
+  gitd='git diff'
+
+# Docker
+alias \
+  dkps='docker ps -a' \
+  dkr='docker run' \
+  dks='docker stop' \
+  dkrm='docker rm' \
+  dkrmi='docker rmi' \
+  dkcu='docker-compose up' \
+  dkcd='docker-compose down' \
+  dkcr='docker-compose restart'
+
+# Pacman
+alias \
+  paci='sudo pacman -S' \
+  pacr='sudo pacman -Rsn' \
+  pacs='pacman -Ss' \
+  pacu='sudo pacman -Syu'
+
+# Apt
+# alias \
+# sai='sudo apt install' \
+# sar='sudo apt remove' \
+# saar='sudo apt autoremove' \
+# uu='sudo apt update && sudo apt upgrade && sudo apt autoremove'
