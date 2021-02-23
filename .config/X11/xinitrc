@@ -1,0 +1,36 @@
+# Defaults
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
+# Xresources
+[ -f $XDG_CONFIG_HOME/X11/xresources ] && xrdb -merge $XDG_CONFIG_HOME/X11/xresources
+
+# Keypress rate
+xset r rate 200 30
+
+# Wallpaper
+nitrogen --restore
+
+# Compositer
+picom -b
+
+# Clipboard
+clipit --daemon &
+
+# Bluelight filter
+/usr/lib/geoclue-2.0/demos/agent &
+redshift-gtk &
+
+# Remove mouse
+unclutter &
+
+# Other
+#mpris-proxy &
+#udiskie &
+
+# DE/WM
+exec i3
