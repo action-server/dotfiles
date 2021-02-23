@@ -1,4 +1,6 @@
 # i3 config file (v4)
+
+# Super key
 set $mod Mod4
 
 # Custom
@@ -6,53 +8,51 @@ hide_edge_borders smart
 default_floating_border pixel
 default_border pixel
 floating_minimum_size 250 x 250
-floating_maximum_size 720 x 540
+floating_maximum_size 960 x 540
 focus_follows_mouse no
-# mouse_warping none
 focus_wrapping no
+# mouse_warping none
 # workspace_auto_back_and_forth yes
-bindsym $mod+s sticky toggle
+# bindsym $mod+s scratchpad show
+bindsym $mod+Shift+s sticky toggle
 font pango:Noto Sans 10
-# font pango:DejaVu Sans Mono 8
-default_border pixel 1
+default_border pixel 5
 default_floating_border normal
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
+# Suspend
+bindsym XF86PowerOff exec --no-startup-id "$XDG_CONFIG_HOME/i3lock/lock.sh; systemctl suspend"
 
 # Audio control
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ && dunstify -h string:x-dunst-stack-tag:volume "Volume: $(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))"
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- && dunstify -h string:x-dunst-stack-tag:volume "Volume: $(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))"
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle && dunstify -h string:x-dunst-stack-tag:volume 'Volume toggle'
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(xbacklight -get))%"
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(xbacklight -get))%"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start Applications
-bindsym $mod+Return exec $TERMINAL
-bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+w exec $BROWSER
-bindsym $mod+Shift+w exec firefox -private-window
-# bindsym $mod+Shift+w exec brave --incognito --no-referrers
-bindsym --release Control+Mod1+x exec --no-startup-id xkill
-bindsym Print exec screengrab
+# Start scratchpad terminal
+for_window [instance="terminal_scratchpad"] move scratchpad 
 
 # kill focused window
 bindsym $mod+q kill
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus right
+bindsym $mod+l focus up
+bindsym $mod+h focus down
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 30 px
+bindsym $mod+Shift+j move down 30 px
+bindsym $mod+Shift+k move up 30 px
+bindsym $mod+Shift+l move right 30 px
 
 # split in horizontal orientation
 bindsym $mod+n split h
@@ -76,7 +76,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 set $ws1 "1"
 set $ws2 "2"
@@ -114,82 +114,138 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec sh ~/.config/i3/i3_config.sh && i3-msg restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# i3 - apps.config
 
-# resize window (you can also use the mouse for that)
+# Autostart
+exec --no-startup-id $TERMINAL --class terminal_scratchpad
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+
+# App bind
+# bindsym --release $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym --release $mod+Return exec --no-startup-id $TERMINAL
+bindsym --release $mod+d exec --no-startup-id dmenu_run
+bindsym --release $mod+w exec $BROWSER
+bindsym --release $mod+Shift+w exec $PRIVATE_BROWSER
+bindsym --release $mod+x exec --no-startup-id xkill
+bindsym --release Print exec --no-startup-id $SCREENSHOT
+bindsym --release $mod+p exec $PDFREADER
+bindsym --release $mod+Shift+v exec pavucontrol
+bindsym --release $mod+Shift+b exec --no-startup-id blueman-manager
+# i3 - mode.config
+
+# Mouse
+set $mode_mouse Mouse mode
+
+mode "$mode_mouse"{
+    bindsym h exec --no-startup-id xdotool mousemove_relative -- -15 0
+    bindsym j exec --no-startup-id xdotool mousemove_relative 0 15
+    bindsym k exec --no-startup-id xdotool mousemove_relative -- 0 -15
+    bindsym l exec --no-startup-id xdotool mousemove_relative 15 0
+
+    bindsym Shift+h exec --no-startup-id xdotool mousemove_relative -- -30 0
+    bindsym Shift+j exec --no-startup-id xdotool mousemove_relative 0 30
+    bindsym Shift+k exec --no-startup-id xdotool mousemove_relative -- 0 -30
+    bindsym Shift+l exec --no-startup-id xdotool mousemove_relative 30 0
+
+    bindsym space exec --no-startup-id xdotool click 1
+
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+
+bindsym $mod+m mode $mode_mouse
+
+# Scratchpad
+set $mode_scratch scratchpad
+
+mode "$mode_scratch" {
+  bindsym $mod+s scratchpad show; mode default
+  bindsym $mod+q scratchpad show; mode default
+}
+
+bindsym $mod+s mode "$mode_scratch"; scratchpad show
+
+# Resize
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym k resize grow width 10 px or 10 ppt; resize grow height 10 px or 10 ppt
+        bindsym j resize shrink width 10 px or 10 ppt; resize shrink height 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
-# Set shut down, restart and locking features
+# System
 set $mode_system (l)ock, (s)uspend (r)eboot, (Shift+s)hutdown
+
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock --color=000000, mode "default"
+    bindsym l exec --no-startup-id $XDG_CONFIG_HOME/i3lock/lock.sh, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl shutdown, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 
     # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym Control+Mod1+Delete mode "$mode_system"
+# i3 - gaps.config
 
-gaps inner 30
-# gaps outer 5
+#gaps inner 30
 
-set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps Gaps: (o) outer, (i) inner, (0) reset
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym 0      gaps inner current set 0; gaps outer current set 0
+    bindsym Shift+0      gaps inner all set 0; gaps outer all set 0
+    bindsym Escape mode "default"
+    bindsym $mod+g mode "default"
 }
+
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+g mode "default"
 }
+
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+g mode "default"
 }
+
+bindsym $mod+g mode "$mode_gaps"
+# i3 - bar
 
 bar {
-        strip_workspace_numbers yes
-        position top
-        status_command i3status
-        # font pango:FiraCode Nerd Font Mono:style=Retina 10
+    separator_symbol " | "
+    strip_workspace_numbers yes
+    position top
+    status_command i3status
 }

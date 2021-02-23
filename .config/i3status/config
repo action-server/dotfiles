@@ -3,13 +3,19 @@ general {
         interval = 5
 }
 
+order += "tztime local"
 order += "memory"
 order += "cpu_temperature 0"
 order += "disk /"
 order += "wireless _first_"
 order += "volume master"
 order += "battery all"
-order += "tztime local"
+
+tztime local {
+        format = "%A, %d/%m/%Y, %H:%M"
+        separator_block_width = 435
+        separator = false
+}
 
 memory {
         format = " %available"
@@ -18,7 +24,7 @@ memory {
 }
 
 cpu_temperature 0 {
-        format = "%degrees糖"
+        format = " %degrees糖"
         max_threshold = "75"
 }
 
@@ -35,7 +41,7 @@ wireless _first_ {
 
 volume master {
         format = "墳 %volume"
-        format_muted = "婢 (%volume)"
+        format_muted = "婢 %volume"
 }
 
 battery all {
@@ -47,8 +53,4 @@ battery all {
         status_full = ""
         threshold_type = "percentage"
         low_threshold = "15"
-}
-
-tztime local {
-        format = "%H:%M"
 }
