@@ -2,6 +2,10 @@
 
 # Shortcut
 alias \
+	rm='echo use del!' \
+	n='newsboat' \
+  m='neomutt' \
+  mutt='neomutt' \
   v='nvim' \
   vim='nvim' \
   t='tree' \
@@ -13,25 +17,36 @@ alias \
   myip='curl ipinfo.io/ip' \
   del='trash-put' \
   cpu='cpupower frequency-info' \
-  powersave='sudo cpupower frequency-set -g powersave -d 800MHz -u 1.5GHz' \
+  powersave='sudo cpupower frequency-set -g powersave -d 800MHz -u 800MHz' \
   performance='sudo cpupower frequency-set -g performance -d 800MHz -u 2.7GHz' \
-  ondemand='sudo cpupower frequency-set -g ondemand -d 800MHz -u 2.7GHz' \
-  conservative='sudo cpupower frequency-set -g conservative -d 800MHz -u 2.7GHz' \
-  xo='nohup xdg-open'
+  ondemand='sudo cpupower frequency-set -g ondemand -d 800MHz -u 1.8GHz' \
+  conservative='sudo cpupower frequency-set -g conservative -d 800MHz -u 1.5GHz' \
+	xo='f(){ nohup xdg-open "$1" >/dev/null 2>&1 & }; f' \
+	silent='f(){ nohup $1 </dev/null >/dev/null 2>&1 & }; f' \
+  mkd='mkdir -pv' \
+	g='grep -i' \
+	e='ranger' \
+	mycc='c99 -Wall -g -o binary' \
+	todo='$EDITOR ~/doc/TODO' \
+	b='cat /sys/class/power_supply/BAT0/capacity'
 
 # Fix
 alias \
-  mpv='mpv --hwdec=auto'
+  ssh='TERM='"'"'xterm-256color'"'"' ssh' \
+	mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 
 # Workspace
 ALIASRC=$XDG_CONFIG_HOME/shell/aliasrc
 alias \
   balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
-  uni='[ -d $HOME/studyspace/uni ] && cd $HOME/studyspace/uni'
+  uni='[ -d $HOME/studyspace/uni ] && cd $HOME/studyspace/uni' \
+	s='cd ~/.local/bin/script' \
+	elhori='cd ~/workspace/website/action-server.com/' \
+	g='cd /home/gamer'
 
 # System
 alias \
-  ls='ls --color=auto' \
+  ls='ls --color=auto --group-directories-first' \
   grep='grep --color=auto' \
   diff='diff --color=auto' \
   la='ls -A' \
@@ -59,10 +74,9 @@ alias \
 
 # Pacman
 alias \
-  paci='sudo pacman -S' \
+	paci='f(){ sudo pacman -S "$@" && notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo pacman -Rsn' \
-  pacs='pacman -Ss' \
-  pacu='sudo pacman -Syu'
+  pacu='sudo pacman -Syu && notify-send "Pacman" "System updated"'
 
 # Apt
 # alias \
