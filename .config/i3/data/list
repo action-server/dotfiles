@@ -1,4 +1,5 @@
 main.config
+float.config
 bind.config
 app.config
 mode.config

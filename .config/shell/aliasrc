@@ -41,8 +41,7 @@ alias \
   balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
   uni='[ -d $HOME/studyspace/uni ] && cd $HOME/studyspace/uni' \
 	s='cd ~/.local/bin/script' \
-	elhori='cd ~/workspace/website/action-server.com/' \
-	g='cd /home/gamer'
+	elhori='cd ~/workspace/website/action-server.com/'
 
 # System
 alias \

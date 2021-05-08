@@ -1,9 +1,11 @@
-Xft.dpi: 96
+/* Xft.dpi: 96 */
 Xft.lcdfilter: lcddefault
 Xft.hintstyle:  hintfull
 Xft.hinting: true
 Xft.antialias: true
 Xft.rgba: rgb
+
+*.font: monospace:size=10
 
 ! special
 *.foreground: #93a1a1
