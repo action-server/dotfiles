@@ -1,0 +1,5 @@
+[user]
+	email = dev@action-server.com
+	name = Action
+[init]
+	defaultBranch = master

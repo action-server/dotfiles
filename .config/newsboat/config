@@ -17,8 +17,7 @@ bind-key s sort
 bind-key S rev-sort
 bind-key BACKSPACE quit
 bind-key ESC quit
-bind-key o open-in-browser-and-mark-read
-bind-key O open-all-unread-in-browser
+bind-key o open-in-browser
 bind-key SPACE macro-prefix
 
 auto-reload yes

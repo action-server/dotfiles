@@ -28,7 +28,8 @@ alias \
 	e='ranger' \
 	mycc='c99 -Wall -g -o binary' \
 	todo='$EDITOR ~/doc/TODO' \
-	b='cat /sys/class/power_supply/BAT0/capacity'
+	b='cat /sys/class/power_supply/BAT0/capacity' \
+	gitalldir='find . -name .git -type d -execdir git status \;'
 
 # Fix
 alias \
@@ -41,7 +42,9 @@ alias \
   balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
   uni='[ -d $HOME/studyspace/uni ] && cd $HOME/studyspace/uni' \
 	s='cd ~/.local/bin/script' \
-	elhori='cd ~/workspace/website/action-server.com/'
+	elhori='cd ~/workspace/website/action-server.com' \
+	linksync='cd ~/workspace/git/linksync' \
+	github='cd ~/workspace/git'
 
 # System
 alias \

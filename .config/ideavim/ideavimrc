@@ -1,0 +1,12 @@
+source ~/.config/nvim/init.vim
+set NERDTree
+map <Leader>e :NERDTree<CR>
+map <Leader><CR> :action Run<CR>
+map <Leader>r :action ReformatCode<CR>
+map <Leader>R :action RunMenu<CR>
+map <Leader>n :action NewFile<CR>
+map <Leader>f :action ToggleDistractionFreeMode<CR>
+map <Leader>h :action HideAllWindows<CR>
+map <Leader>c :e ~/.config/ideavim/ideavimrc<CR>
+map K :action NextTab<CR>
+map J :action PreviousTab<CR>
