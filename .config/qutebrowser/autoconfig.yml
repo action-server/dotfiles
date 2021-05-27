@@ -9,8 +9,8 @@ settings:
   bindings.commands:
     global:
       normal:
-        J: tab-next
-        K: tab-prev
+        J: tab-prev
+        K: tab-next
         d: run-with-count 5 scroll down
         u: run-with-count 5 scroll up
         x: tab-close

@@ -13,24 +13,14 @@ fi
 xset r rate 200 30
 
 # Wallpaper
-nitrogen --restore
-
-# Compositer
-picom -b
-
-# Clipboard
-clipit --daemon &
+nitrogen --restore &
 
 # Bluelight filter
-/usr/lib/geoclue-2.0/demos/agent &
-redshift-gtk &
-
-# Remove mouse
-unclutter &
+pgrep redshift || (/usr/lib/geoclue-2.0/demos/agent && redshift) &
 
 # Other
-#mpris-proxy &
-#udiskie &
+#pgrep mpris-proxy || mpris-proxy &
+#pgrep udiskie || udiskie &
 
 # DE/WM
-exec i3
+pgrep i3 || exec i3

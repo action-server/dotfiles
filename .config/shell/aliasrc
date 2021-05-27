@@ -28,8 +28,7 @@ alias \
 	e='ranger' \
 	mycc='c99 -Wall -g -o binary' \
 	todo='$EDITOR ~/doc/TODO' \
-	b='cat /sys/class/power_supply/BAT0/capacity' \
-	gitalldir='find . -name .git -type d -execdir git status \;'
+	b='cat /sys/class/power_supply/BAT0/capacity'
 
 # Fix
 alias \
@@ -78,7 +77,7 @@ alias \
 alias \
 	paci='f(){ sudo pacman -S "$@" && notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo pacman -Rsn' \
-  pacu='sudo pacman -Syu && notify-send "Pacman" "System updated"'
+  pacu='sudo pacman -Syu --noconfirm && notify-send "Pacman" "System updated"'
 
 # Apt
 # alias \
