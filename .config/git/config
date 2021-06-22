@@ -1,5 +1,8 @@
 [user]
 	email = dev@action-server.com
 	name = Action
+	signingKey = E67F5C8E48AE7579D9B149549816B2E6337AD199
 [init]
 	defaultBranch = master
+[commit]
+	gpgSign = true

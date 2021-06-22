@@ -13,7 +13,7 @@ order += "battery all"
 
 tztime local {
         format = "%A, %d/%m/%Y, %H:%M"
-        separator_block_width = 435
+        separator_block_width = 500
         separator = false
 }
 

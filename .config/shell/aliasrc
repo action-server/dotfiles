@@ -1,14 +1,16 @@
 #!/bin/sh
 
+ALIASRC=$XDG_CONFIG_HOME/shell/aliasrc
+
 # Shortcut
 alias \
+  balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
 	rm='echo use del!' \
 	n='newsboat' \
   m='neomutt' \
   mutt='neomutt' \
   v='nvim' \
   vim='nvim' \
-  t='tree' \
   copy='xclip -selection clipboard' \
   vpnc='sudo protonvpn connect' \
   vpnr='sudo protonvpn reconnect' \
@@ -17,18 +19,20 @@ alias \
   myip='curl ipinfo.io/ip' \
   del='trash-put' \
   cpu='cpupower frequency-info' \
-  powersave='sudo cpupower frequency-set -g powersave -d 800MHz -u 800MHz' \
-  performance='sudo cpupower frequency-set -g performance -d 800MHz -u 2.7GHz' \
-  ondemand='sudo cpupower frequency-set -g ondemand -d 800MHz -u 1.8GHz' \
-  conservative='sudo cpupower frequency-set -g conservative -d 800MHz -u 1.5GHz' \
+  powersave='sudo cpupower frequency-set -g powersave' \
+  performance='sudo cpupower frequency-set -g performance' \
+  ondemand='sudo cpupower frequency-set -g ondemand' \
+  conservative='sudo cpupower frequency-set -g conservative' \
+	freq800='sudo cpupower frequency-set -u 800MHz' \
+	freq1200='sudo cpupower frequency-set -u 1200MHz' \
+	freq1800='sudo cpupower frequency-set -u 1800MHz' \
+	freq2700='sudo cpupower frequency-set -u 2700MHz' \
 	xo='f(){ nohup xdg-open "$1" >/dev/null 2>&1 & }; f' \
 	silent='f(){ nohup $1 </dev/null >/dev/null 2>&1 & }; f' \
   mkd='mkdir -pv' \
-	g='grep -i' \
 	e='ranger' \
 	mycc='c99 -Wall -g -o binary' \
-	todo='$EDITOR ~/doc/TODO' \
-	b='cat /sys/class/power_supply/BAT0/capacity'
+	t='$EDITOR ~/doc/TODO'
 
 # Fix
 alias \
@@ -36,14 +40,13 @@ alias \
 	mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 
 # Workspace
-ALIASRC=$XDG_CONFIG_HOME/shell/aliasrc
 alias \
-  balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
-  uni='[ -d $HOME/studyspace/uni ] && cd $HOME/studyspace/uni' \
-	s='cd ~/.local/bin/script' \
-	elhori='cd ~/workspace/website/action-server.com' \
-	linksync='cd ~/workspace/git/linksync' \
-	github='cd ~/workspace/git'
+  cduni='cd $HOME/studyspace/uni' \
+	s='cd ~/.local/bin' \
+	cdaction='cd ~/workspace/website/action-server.com' \
+	cdlinksync='cd ~/workspace/git/linksync' \
+	cdgit='cd ~/workspace/git' \
+	cdblog4j='cd ~/workspace/git/blog4j'
 
 # System
 alias \
@@ -57,6 +60,7 @@ alias \
 # Git
 alias \
   gits='git status' \
+  g='git status' \
   gitl='git log' \
   gitch='git checkout' \
   gitb='git branch' \

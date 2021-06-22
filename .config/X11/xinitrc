@@ -12,11 +12,13 @@ fi
 # Keypress rate
 xset r rate 200 30
 
+[[ -f $XDG_CONFIG_HOME/X11/xmodmap ]] && xmodmap $XDG_CONFIG_HOME/X11/xmodmap
+
 # Wallpaper
 nitrogen --restore &
 
 # Bluelight filter
-pgrep redshift || (/usr/lib/geoclue-2.0/demos/agent && redshift) &
+(/usr/lib/geoclue-2.0/demos/agent && redshift) &
 
 # Other
 #pgrep mpris-proxy || mpris-proxy &
