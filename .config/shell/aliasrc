@@ -46,7 +46,8 @@ alias \
 	cdaction='cd ~/workspace/website/action-server.com' \
 	cdlinksync='cd ~/workspace/git/linksync' \
 	cdgit='cd ~/workspace/git' \
-	cdblog4j='cd ~/workspace/git/blog4j'
+	cdblog4j='cd ~/workspace/git/blog4j' \
+	cdjameel='cd ~/workspace/git/jameel'
 
 # System
 alias \
@@ -64,7 +65,9 @@ alias \
   gitl='git log' \
   gitch='git checkout' \
   gitb='git branch' \
-  gitd='git diff'
+  gitd='git diff' \
+	gitc='git commit' \
+	gitds='git diff --staged'
 
 # Docker
 alias \

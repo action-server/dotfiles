@@ -19,6 +19,7 @@ application/x-extension-xhtml=hardend-firefox.desktop
 application/x-extension-xht=hardend-firefox.desktop
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_opt_eclipse_.desktop
+x-scheme-handler/etcher=balena-etcher-electron.desktop
 
 [Added Associations]
 x-scheme-handler/http=hardend-firefox.desktop;
