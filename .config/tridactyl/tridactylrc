@@ -1,0 +1,12 @@
+bind j scrollline 10
+bind k scrollline -10
+bind d scrollline 20
+bind u scrollline -20
+bind x tabclose
+bind X undo
+
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind <Escape> mode normal; hidecmdline; nohlsearch
