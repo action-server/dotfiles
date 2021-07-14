@@ -4,9 +4,9 @@ bind d scrollline 20
 bind u scrollline -20
 bind x tabclose
 bind X undo
-
+bind e nmode ignore 1 mode normal
 bind / fillcmdline find
 bind ? fillcmdline find -?
 bind n findnext 1
 bind N findnext -1
-bind <Escape> mode normal; hidecmdline; nohlsearch
+bind <Escape> composite mode normal ; hidecmdline ; nohlsearch

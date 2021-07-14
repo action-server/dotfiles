@@ -18,7 +18,7 @@ xset r rate 200 30
 nitrogen --restore &
 
 # Bluelight filter
-(/usr/lib/geoclue-2.0/demos/agent && redshift) &
+redshift -l 51:7 &
 
 # Other
 #pgrep mpris-proxy || mpris-proxy &
