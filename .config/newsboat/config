@@ -23,8 +23,8 @@ bind-key SPACE macro-prefix
 auto-reload yes
 # download-full-page yes
 prepopulate-query-feeds yes
-browser "open-rss-link %u"
-macro y set browser "printf %u | xclip -selection clipboard"; open-in-browser-and-mark-read; set browser "open-rss-link %u"
+browser "nohup open-rss-link %u </dev/null >/dev/null 2>&1 &"
+macro y set browser "printf %u | xclip -selection clipboard"; open-in-browser-and-mark-read; set browser "nohup open-rss-link %u </dev/null >/dev/null 2>&1 &"
 datetime-format "%D, %R"
 
 color listnormal cyan default

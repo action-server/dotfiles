@@ -714,8 +714,8 @@ cursor:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  # - { key: U,         mods: Control,        mode: ~Alt,        action: ScrollHalfPageUp     }
-  # - { key: D,         mods: Control,        mode: ~Alt,        action: ScrollHalfPageDown   }
+  - { key: B,         mods: Control,        mode: ~Alt,        action: ScrollHalfPageUp     }
+  - { key: F,         mods: Control,        mode: ~Alt,        action: ScrollHalfPageDown   }
   - { key: G,         mods: Control,        mode: ~Alt,        action: ScrollToTop,         }
   - { key: G,         mods: Control|Shift,  mode: ~Alt,        action: ScrollToBottom       }
   # - { key: K,         mods: Control,        mode: ~Alt,        action: ScrollLineUp         }

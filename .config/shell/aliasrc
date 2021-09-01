@@ -28,7 +28,7 @@ alias \
 	freq1800='sudo cpupower frequency-set -u 1800MHz' \
 	freq2700='sudo cpupower frequency-set -u 2700MHz' \
 	xo='f(){ nohup xdg-open "$1" >/dev/null 2>&1 & }; f' \
-	silent='f(){ nohup $1 </dev/null >/dev/null 2>&1 & }; f' \
+	silent='f(){ nohup "$@" </dev/null >/dev/null 2>&1 & }; f' \
   mkd='mkdir -pv' \
 	e='ranger' \
 	mycc='c99 -Wall -g -o binary' \
@@ -56,7 +56,8 @@ alias \
   diff='diff --color=auto' \
   la='ls -A' \
   l='ls -ACF' \
-  ll='ls -alhF'
+  ll='ls -alhF' \
+	free='free -h'
 
 # Git
 alias \
