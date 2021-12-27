@@ -21,7 +21,7 @@ nitrogen --restore &
 redshift -l 51:7 &
 
 # Other
-#pgrep mpris-proxy || mpris-proxy &
+pgrep mpris-proxy || mpris-proxy &
 #pgrep udiskie || udiskie &
 
 # DE/WM

@@ -6,6 +6,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin/script
 export PATH=$PATH:$HOME/.local/bin/hardend
 export PATH=$PATH:$HOME/.cache/pub/bin
+export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 
 export EDITOR=nvim
 export VISUAL=nvim

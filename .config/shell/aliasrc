@@ -85,7 +85,8 @@ alias \
 alias \
 	paci='f(){ sudo pacman -S "$@" && notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo pacman -Rsn' \
-  pacu='sudo pacman -Syu --noconfirm && notify-send "Pacman" "System updated"'
+  pacu='sudo pacman -Syu --noconfirm && notify-send "Pacman" "System updated"'\
+	pacs='pacman -Ss'
 
 # Apt
 # alias \
