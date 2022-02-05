@@ -32,7 +32,8 @@ alias \
   mkd='mkdir -pv' \
 	e='ranger' \
 	mycc='c99 -Wall -g -o binary' \
-	t='$EDITOR ~/doc/TODO'
+	t='$EDITOR ~/doc/TODO' \
+	free='free -h'
 
 # Fix
 alias \
@@ -55,7 +56,7 @@ alias \
   grep='grep --color=auto' \
   diff='diff --color=auto' \
   la='ls -A' \
-  l='ls -ACF' \
+  l='ls -alh' \
   ll='ls -alhF' \
 	free='free -h'
 

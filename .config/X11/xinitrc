@@ -12,7 +12,8 @@ fi
 # Keypress rate
 xset r rate 200 30
 
-[[ -f $XDG_CONFIG_HOME/X11/xmodmap ]] && xmodmap $XDG_CONFIG_HOME/X11/xmodmap
+# xmodmap
+#[[ -f $XDG_CONFIG_HOME/X11/xmodmap ]] && xmodmap $XDG_CONFIG_HOME/X11/xmodmap
 
 # Wallpaper
 nitrogen --restore &
