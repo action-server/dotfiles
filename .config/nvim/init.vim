@@ -1,7 +1,6 @@
 let mapleader =" "
 
 " Install vim plugin manager "vim-plug" if not found.
-"
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
@@ -41,10 +40,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/nvim-compe'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 set termguicolors
@@ -52,11 +48,6 @@ set background=dark
 let g:gruvbox_contrast_light = 'soft'
 let g:gruvbox_contrast_dark = 'soft'
 colorscheme gruvbox
-
-" noremap <up> <nop>
-" noremap <down> <nop>
-" noremap <left> <nop>
-" noremap <right> <nop>
 nnoremap <esc> :nohl <CR>
 nnoremap <c-p> :FZF <CR>
 nnoremap <Leader>s :set spell!<CR>
