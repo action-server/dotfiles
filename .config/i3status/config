@@ -25,7 +25,7 @@ memory {
 
 cpu_temperature 0 {
         format = " %degrees°C"
-        max_threshold = "75"
+        max_threshold = "90"
 }
 
 disk "/" {
