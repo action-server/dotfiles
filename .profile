@@ -1,19 +1,31 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
+export XDG_DESKTOP_DIR="$HOME/dl"
+export XDG_DOWNLOAD_DIR="$HOME/dl"
+export XDG_DOCUMENTS_DIR="$HOME/doc"
+export XDG_MUSIC_DIR="$HOME/media/aud"
+export XDG_PICTURES_DIR="$HOME/media/pic"
+export XDG_VIDEOS_DIR="$HOME/media/vid"
+export XDG_TEMPLATES_DIR="$HOME/dl"
+export XDG_PUBLICSHARE_DIR="$HOME/dl"
 
-export EDITOR=nvim
-export VISUAL=nvim
-export PAGER=less
-export TERMINAL=alacritty
-export BROWSER=mybrowser
-export PRIVATE_BROWSER=mybrowser-private
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+export TERMINAL='alacritty'
+export BROWSER='mybrowser'
+export PRIVATE_BROWSER='mybrowser-private'
 export TERMINAL_BROWSER="w3m"
 export SCREENSHOT="flameshot gui"
-export PDFREADER=zathura
+export PDFREADER='zathura'
 # export MOZ_X11_EGL=1
 # export PULSE_SERVER='tcp:127.0.0.1:4713'
-export WINIT_X11_SCALE_FACTOR=1
+export WINIT_X11_SCALE_FACTOR='1'
+export FZF_DEFAULT_COMMAND='find .'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 # Home directory clean up
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
