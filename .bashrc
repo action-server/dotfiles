@@ -14,9 +14,6 @@ export HISTSIZE=10000
 # set -o vi
 # bind -x '"\C-l": clear'
 
-# Remove unnecessary files and directories
-rm -rf -- .calc_history .w3m/ ./nohup.out
-
 # Check if .bash_aliases is available and source it.
 [ -f $XDG_CONFIG_HOME/shell/aliasrc ] && . $XDG_CONFIG_HOME/shell/aliasrc
 

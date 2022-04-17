@@ -11,9 +11,11 @@ settings:
       normal:
         J: tab-prev
         K: tab-next
+        X: undo
         d: run-with-count 5 scroll down
         u: run-with-count 5 scroll up
         x: tab-close
-        X: undo
+  content.blocking.method:
+    global: both
   scrolling.smooth:
     global: true

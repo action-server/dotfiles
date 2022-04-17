@@ -5,7 +5,7 @@ ALIASRC=$XDG_CONFIG_HOME/shell/aliasrc
 # Shortcut
 alias \
   balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
-	rm='echo use del!' \
+	rm='f(){ echo use del!; }; f' \
 	n='newsboat' \
   m='neomutt' \
   mutt='neomutt' \
@@ -27,8 +27,8 @@ alias \
 	freq1200='sudo cpupower frequency-set -u 1200MHz' \
 	freq1800='sudo cpupower frequency-set -u 1800MHz' \
 	freq2700='sudo cpupower frequency-set -u 2700MHz' \
-	xo='f(){ nohup xdg-open "$1" >/dev/null 2>&1 & }; f' \
-	silent='f(){ nohup "$@" </dev/null >/dev/null 2>&1 & }; f' \
+	xo='f(){ nohup xdg-open "$@" >/dev/null 2>&1 & }; f' \
+	nh='f(){ nohup "$@" >/dev/null 2>&1 & }; f' \
   mkd='mkdir -pv' \
 	e='ranger' \
 	mycc='c99 -Wall -g -o binary' \
@@ -86,7 +86,7 @@ alias \
 alias \
 	paci='f(){ sudo pacman -S "$@" && notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo pacman -Rns' \
-  pacu='sudo pacman -Syu --noconfirm && notify-send "Pacman" "System updated"'\
+  pacu='sudo pacman -Syu --noconfirm && flatpak update --noninteractive && notify-send "Package Manager" "System updated"'\
 	pacs='pacman -Ss'
 
 # Apt

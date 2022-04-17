@@ -13,6 +13,7 @@ export XDG_PUBLICSHARE_DIR="$HOME/dl"
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
+export TERM='alacritty'
 export TERMINAL='alacritty'
 export BROWSER='mybrowser'
 export PRIVATE_BROWSER='mybrowser-private'
@@ -56,7 +57,5 @@ umask 022
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-	echo '============================================' >> x.log
-	date >> x.log
-  exec startx $XDG_CONFIG_HOME/X11/xinitrc -- -ardelay 200 -arinterval 30 >> x.log 2>&1
+  exec startx $XDG_CONFIG_HOME/X11/xinitrc -- -ardelay 200 -arinterval 30
 fi
