@@ -1,3 +1,4 @@
+# XDG env
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -10,6 +11,7 @@ export XDG_VIDEOS_DIR="$HOME/media/vid"
 export XDG_TEMPLATES_DIR="$HOME/dl"
 export XDG_PUBLICSHARE_DIR="$HOME/dl"
 
+# General
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
@@ -21,7 +23,6 @@ export TERMINAL_BROWSER="w3m"
 export SCREENSHOT="flameshot gui"
 export PDFREADER='zathura'
 # export MOZ_X11_EGL=1
-# export PULSE_SERVER='tcp:127.0.0.1:4713'
 export WINIT_X11_SCALE_FACTOR='1'
 export FZF_DEFAULT_COMMAND='find .'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -47,8 +48,7 @@ export GOPATH="$XDG_DATA_HOME"/go
 
 # Append to environmental variable PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.local/bin/script:$PATH
-export PATH=$HOME/.local/bin/hardend:$PATH
+export PATH=$HOME/.local/bin/scripts:$PATH
 export PATH=$XDG_CONFIG_HOME/composer/vendor/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 

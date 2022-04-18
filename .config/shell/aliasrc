@@ -1,10 +1,14 @@
 #!/bin/sh
 
-ALIASRC=$XDG_CONFIG_HOME/shell/aliasrc
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	XDG_CONFIG_HOME="$HOME"
+fi
+
+aliasrc=$XDG_CONFIG_HOME/shell/aliasrc
 
 # Shortcut
 alias \
-  balias='[ -f $ALIASRC ] && $EDITOR $ALIASRC && . $ALIASRC' \
+  balias='[ -f $aliasrc ] && $EDITOR $aliasrc && . $aliasrc' \
 	rm='f(){ echo use del!; }; f' \
 	n='newsboat' \
   m='neomutt' \
@@ -37,12 +41,12 @@ alias \
 
 # Fix
 alias \
-  ssh='TERM='"'"'xterm-256color'"'"' ssh' \
 	mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
+  # ssh='TERM='"'"'xterm-256color'"'"' ssh' \
 
 # Workspace
 alias \
-  cduni='cd $HOME/studyspace/uni' \
+  cduni='cd	~/studyspace/uni' \
 	s='cd ~/.local/bin' \
 	cdaction='cd ~/workspace/website/action-server.com' \
 	cdlinksync='cd ~/workspace/git/linksync' \
@@ -86,7 +90,7 @@ alias \
 alias \
 	paci='f(){ sudo pacman -S "$@" && notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo pacman -Rns' \
-  pacu='sudo pacman -Syu --noconfirm && flatpak update --noninteractive && notify-send "Package Manager" "System updated"'\
+  pacu='sudo /usr/bin/pacman -Syu --noconfirm && flatpak update --noninteractive && notify-send "Package Manager" "System updated"'\
 	pacs='pacman -Ss'
 
 # Apt
