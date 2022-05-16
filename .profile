@@ -1,30 +1,30 @@
 # XDG env
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_DESKTOP_DIR="$HOME/dl"
-export XDG_DOWNLOAD_DIR="$HOME/dl"
-export XDG_DOCUMENTS_DIR="$HOME/doc"
-export XDG_MUSIC_DIR="$HOME/media/aud"
-export XDG_PICTURES_DIR="$HOME/media/pic"
-export XDG_VIDEOS_DIR="$HOME/media/vid"
-export XDG_TEMPLATES_DIR="$HOME/dl"
-export XDG_PUBLICSHARE_DIR="$HOME/dl"
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_DESKTOP_DIR="$HOME"/dl
+export XDG_DOWNLOAD_DIR="$HOME"/dl
+export XDG_DOCUMENTS_DIR="$HOME"/doc
+export XDG_MUSIC_DIR="$HOME"/media/aud
+export XDG_PICTURES_DIR="$HOME"/media/pic
+export XDG_VIDEOS_DIR="$HOME"/media/vid
+export XDG_TEMPLATES_DIR="$HOME"/dl
+export XDG_PUBLICSHARE_DIR="$HOME"/dl
 
 # General
-export EDITOR='nvim'
-export VISUAL='nvim'
-export PAGER='less'
-export TERM='alacritty'
-export TERMINAL='alacritty'
-export BROWSER='mybrowser'
-export PRIVATE_BROWSER='mybrowser-private'
-export TERMINAL_BROWSER="w3m"
-export SCREENSHOT="flameshot gui"
-export PDFREADER='zathura'
+export EDITOR='/usr/bin/nvim'
+export VISUAL='/usr/bin/nvim'
+export PAGER='/usr/bin/less'
+# export TERM='/usr/bin/alacritty'
+export TERMINAL='/usr/bin/alacritty'
+export BROWSER="$HOME"/.local/bin/mybrowser
+export PRIVATE_BROWSER="$HOME"/.local/bin/mybrowser-private
+export TERMINAL_BROWSER="/usr/bin/w3m"
+export SCREENSHOT="/usr/bin/flameshot gui"
+export PDFREADER='/usr/bin/zathura'
 # export MOZ_X11_EGL=1
 export WINIT_X11_SCALE_FACTOR='1'
-export FZF_DEFAULT_COMMAND='find .'
+export FZF_DEFAULT_COMMAND='/usr/bin/find .'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
@@ -47,15 +47,14 @@ export PUB_CACHE="$XDG_CACHE_HOME"/pub
 export GOPATH="$XDG_DATA_HOME"/go
 
 # Append to environmental variable PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.local/bin/scripts:$PATH
-export PATH=$XDG_CONFIG_HOME/composer/vendor/bin:$PATH
-export PATH=$GOPATH/bin:$PATH
+export PATH="$HOME"/.local/bin:"$PATH"
 
 umask 022
 
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-  exec startx $XDG_CONFIG_HOME/X11/xinitrc -- -ardelay 200 -arinterval 30
+	echo '=========================================================' >> x.log
+  exec startx $XDG_CONFIG_HOME/X11/xinitrc -- -ardelay 200 -arinterval 30 >> x.log 2>&1
+	echo '=========================================================' >> x.log
 fi
