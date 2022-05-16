@@ -1,7 +1,7 @@
-# source /usr/share/fzf/key-bindings.bash
-# source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash # Fuzzy finder key bindings
+source /usr/share/fzf/completion.bash # Fuzzy finder auto completion
 
-# eval "$(starship init bash)" # starship prompt
+eval "$(starship init bash)" # Starship prompt
 
 shopt -s autocd # Auto change directory when entering path
 

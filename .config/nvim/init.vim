@@ -25,7 +25,7 @@ set nowrapscan
 set ignorecase
 set smartcase
 set laststatus=2
-set colorcolumn=80
+set colorcolumn=120
 set hidden
 set undodir=~/.local/share/nvim/undo
 set undofile

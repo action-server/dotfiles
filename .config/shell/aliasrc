@@ -1,48 +1,43 @@
 #!/bin/sh
 
-if [ -z "$XDG_CONFIG_HOME" ]; then
-	XDG_CONFIG_HOME="$HOME"
-fi
-
-aliasrc=$XDG_CONFIG_HOME/shell/aliasrc
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+aliasrc="$XDG_CONFIG_HOME"/shell/aliasrc
 
 # Shortcut
 alias \
   balias='[ -f $aliasrc ] && $EDITOR $aliasrc && . $aliasrc' \
-	rm='f(){ echo use del!; }; f' \
-	n='newsboat' \
-  m='neomutt' \
-  mutt='neomutt' \
-  v='nvim' \
-  vim='nvim' \
-  copy='xclip -selection clipboard' \
-  vpnc='sudo protonvpn connect' \
-  vpnr='sudo protonvpn reconnect' \
-  vpns='protonvpn status' \
-  vpnd='sudo protonvpn disconnect' \
-  myip='curl ipinfo.io/ip' \
-  del='trash-put' \
-  cpu='cpupower frequency-info' \
-  powersave='sudo cpupower frequency-set -g powersave' \
-  performance='sudo cpupower frequency-set -g performance' \
-  ondemand='sudo cpupower frequency-set -g ondemand' \
-  conservative='sudo cpupower frequency-set -g conservative' \
-	freq800='sudo cpupower frequency-set -u 800MHz' \
-	freq1200='sudo cpupower frequency-set -u 1200MHz' \
-	freq1800='sudo cpupower frequency-set -u 1800MHz' \
-	freq2700='sudo cpupower frequency-set -u 2700MHz' \
-	xo='f(){ nohup xdg-open "$@" >/dev/null 2>&1 & }; f' \
-	nh='f(){ nohup "$@" >/dev/null 2>&1 & }; f' \
-  mkd='mkdir -pv' \
-	e='ranger' \
-	mycc='c99 -Wall -g -o binary' \
-	t='$EDITOR ~/doc/TODO' \
-	free='free -h'
+	rm='f(){ /usr/bin/echo use del!; }; f' \
+	n='/usr/bin/newsboat' \
+  m='/usr/bin/neomutt' \
+  mutt='/usr/bin/neomutt' \
+  v='/usr/bin/nvim' \
+  vim='/usr/bin/nvim' \
+  copy='/usr/bin/xclip -selection clipboard' \
+  myip='/usr/bin/curl -L https://ipinfo.io/ip' \
+  del='/usr/bin/trash-put' \
+  cpu='/usr/bin/cpupower frequency-info' \
+  powersave='sudo /usr/bin/cpupower frequency-set -g powersave' \
+  performance='sudo /usr/bin/cpupower frequency-set -g performance' \
+  ondemand='sudo /usr/bin/cpupower frequency-set -g ondemand' \
+  conservative='sudo /usr/bin/cpupower frequency-set -g conservative' \
+  schedutil='sudo /usr/bin/cpupower frequency-set -g schedutil' \
+	freq800='sudo /usr/bin/cpupower frequency-set -u 800MHz' \
+	freq1200='sudo /usr/bin/cpupower frequency-set -u 1200MHz' \
+	freq1800='sudo /usr/bin/cpupower frequency-set -u 1800MHz' \
+	freq2700='sudo /usr/bin/cpupower frequency-set -u 2700MHz' \
+	freq3500='sudo /usr/bin/cpupower frequency-set -u 3500MHz' \
+	freq4000='sudo /usr/bin/cpupower frequency-set -u 4000MHz' \
+	xo='f(){ /usr/bin/nohup /usr/bin/xdg-open "$@" >/dev/null 2>&1 & }; f' \
+	nh='f(){ /usr/bin/nohup "$@" >/dev/null 2>&1 & }; f' \
+  mkd='/usr/bin/mkdir -pv' \
+	e='/usr/bin/ranger' \
+	mycc='/usr/bin/c99 -Wall -g -o binary' \
+	t='$EDITOR ~/doc/TODO'
 
 # Fix
 alias \
-	mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
-  # ssh='TERM='"'"'xterm-256color'"'"' ssh' \
+  ssh='TERM=''xterm-256color'' ssh' \
+	mbsync='/usr/bin/mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 
 # Workspace
 alias \
@@ -56,46 +51,46 @@ alias \
 
 # System
 alias \
-  ls='ls --color=auto --group-directories-first' \
-  grep='grep --color=auto' \
-  diff='diff --color=auto' \
-  la='ls -A' \
-  l='ls -alh' \
-  ll='ls -alhF' \
-	free='free -h'
+  ls='/usr/bin/ls --color=auto --group-directories-first' \
+  grep='/usr/bin/grep --color=auto' \
+  diff='/usr/bin/diff --color=auto' \
+  la='/usr/bin/ls -A' \
+  l='/usr/bin/ls -alh' \
+  ll='/usr/bin/ls -alhF' \
+	free='/usr/bin/free -h'
 
 # Git
 alias \
-  gits='git status' \
-  g='git status' \
-  gitl='git log' \
-  gitch='git checkout' \
-  gitb='git branch' \
-  gitd='git diff' \
-	gitc='git commit' \
-	gitds='git diff --staged'
+  gits='/usr/bin/git status' \
+  g='/usr/bin/git status' \
+  gitl='/usr/bin/git log' \
+  gitch='/usr/bin/git checkout' \
+  gitb='/usr/bin/git branch' \
+  gitd='/usr/bin/git diff' \
+	gitc='/usr/bin/git commit' \
+	gitds='/usr/bin/git diff --staged'
 
 # Docker
 alias \
-  dkps='docker ps -a' \
-  dkr='docker run' \
-  dks='docker stop' \
-  dkrm='docker rm' \
-  dkrmi='docker rmi' \
-  dkcu='docker-compose up' \
-  dkcd='docker-compose down' \
-  dkcr='docker-compose restart'
+  dkps='/usr/bin/docker ps -a' \
+  dkr='/usr/bin/docker run' \
+  dks='/usr/bin/docker stop' \
+  dkrm='/usr/bin/docker rm' \
+  dkrmi='/usr/bin/docker rmi' \
+  dkcu='/usr/bin/docker-compose up' \
+  dkcd='/usr/bin/docker-compose down' \
+  dkcr='/usr/bin/docker-compose restart'
 
 # Pacman
 alias \
-	paci='f(){ sudo pacman -S "$@" && notify-send "Pacman" "Package(s) installed"; }; f' \
-  pacr='sudo pacman -Rns' \
-  pacu='sudo /usr/bin/pacman -Syu --noconfirm && flatpak update --noninteractive && notify-send "Package Manager" "System updated"'\
-	pacs='pacman -Ss'
+	paci='f(){ sudo /usr/bin/pacman -S "$@" && /usr/bin/notify-send "Pacman" "Package(s) installed"; }; f' \
+  pacr='sudo /usr/bin/pacman -Rns' \
+  pacu='sudo /usr/bin/pacman -Syyuu && /usr/bin/flatpak update --user --noninteractive && /usr/bin/notify-send "Package Manager" "System updated"'\
+	pacs='/usr/bin/pacman -Ss'
 
 # Apt
 # alias \
-# sai='sudo apt install' \
-# sar='sudo apt remove' \
-# saar='sudo apt autoremove' \
-# uu='sudo apt update && sudo apt upgrade && sudo apt autoremove'
+# sai='sudo /usr/bin/apt install' \
+# sar='sudo /usr/bin/apt remove' \
+# sau='sudo /usr/bin/apt update && sudo /usr/bin/apt upgrade
+# saar='sudo /usr/bin/apt autoremove' \

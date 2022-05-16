@@ -20,8 +20,8 @@ redshift -l 51:7 &
 
 # Audio control
 pgrep playerctld || playerctld daemon &
-pgrep mpris-proxy || mpris-proxy &
-pgrep -f mpDris2 || mpDris2 &
+# pgrep mpris-proxy || mpris-proxy &
+# pgrep -f mpDris2 || mpDris2 &
 pgrep mpd || mpd &
 
 # USB Hotplug

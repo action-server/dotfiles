@@ -1,7 +1,8 @@
-main.config
-float.config
-bind.config
-app.config
-mode.config
-gap.config
-bar.config
+main.conf
+float.conf
+bind.conf
+app.conf
+mode.conf
+gap.conf
+bar.conf
+test.conf
