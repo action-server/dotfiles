@@ -23,10 +23,9 @@ alias \
   schedutil='sudo /usr/bin/cpupower frequency-set -g schedutil' \
 	freq800='sudo /usr/bin/cpupower frequency-set -u 800MHz' \
 	freq1200='sudo /usr/bin/cpupower frequency-set -u 1200MHz' \
-	freq1800='sudo /usr/bin/cpupower frequency-set -u 1800MHz' \
-	freq2700='sudo /usr/bin/cpupower frequency-set -u 2700MHz' \
-	freq3500='sudo /usr/bin/cpupower frequency-set -u 3500MHz' \
-	freq4000='sudo /usr/bin/cpupower frequency-set -u 4000MHz' \
+	freq1600='sudo /usr/bin/cpupower frequency-set -u 1600MHz' \
+	freq1900='sudo /usr/bin/cpupower frequency-set -d 1900MHz' \
+	freq2700='sudo /usr/bin/cpupower frequency-set -d 2700MHz' \
 	xo='f(){ /usr/bin/nohup /usr/bin/xdg-open "$@" >/dev/null 2>&1 & }; f' \
 	nh='f(){ /usr/bin/nohup "$@" >/dev/null 2>&1 & }; f' \
   mkd='/usr/bin/mkdir -pv' \
@@ -52,11 +51,11 @@ alias \
 # System
 alias \
   ls='/usr/bin/ls --color=auto --group-directories-first' \
+  la='ls -A' \
+  l='ls -alh' \
+  ll='ls -alhF' \
   grep='/usr/bin/grep --color=auto' \
   diff='/usr/bin/diff --color=auto' \
-  la='/usr/bin/ls -A' \
-  l='/usr/bin/ls -alh' \
-  ll='/usr/bin/ls -alhF' \
 	free='/usr/bin/free -h'
 
 # Git
@@ -85,8 +84,8 @@ alias \
 alias \
 	paci='f(){ sudo /usr/bin/pacman -S "$@" && /usr/bin/notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo /usr/bin/pacman -Rns' \
-  pacu='sudo /usr/bin/pacman -Syyuu && /usr/bin/flatpak update --user --noninteractive && /usr/bin/notify-send "Package Manager" "System updated"'\
-	pacs='/usr/bin/pacman -Ss'
+	pacs='/usr/bin/pacman -Ss' \
+  pacu='sudo /usr/bin/pacman -Syyuu && /usr/bin/flatpak update --user --noninteractive && /usr/bin/notify-send "Package Manager" "System updated"'
 
 # Apt
 # alias \

@@ -6,7 +6,7 @@ eval "$(starship init bash)" # Starship prompt
 shopt -s autocd # Auto change directory when entering path
 
 export HISTCONTROL=erasedups # Stop logging of repeated identical commands
-export HISTSIZE=10000 # Limit shell history
+export HISTSIZE=1000000 # Limit shell history
 
 # set -o vi # Use vim keybindings for readline
 # bind -x '"\C-l": clear' # bind <ctrl+l> to clear, to override vim binding

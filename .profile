@@ -17,6 +17,11 @@ export VISUAL='/usr/bin/nvim'
 export PAGER='/usr/bin/less'
 # export TERM='/usr/bin/alacritty'
 export TERMINAL='/usr/bin/alacritty'
+export TERMINAL_TMUX='/usr/bin/alacritty -e /usr/bin/tmux new-session -A -s main'
+export TERMINAL_SCRATCHPAD='/usr/bin/alacritty --class terminal_scratchpad'
+export TERMINAL_NEOMUTT='/usr/bin/alacritty -o window.opacity=1.0 -e /usr/bin/neomutt'
+export TERMINAL_NEWSBOAT='/usr/bin/alacritty -o window.opacity=1.0 -e /usr/bin/newsboat'
+export TERMINAL_LF='/usr/bin/alacritty -e /usr/bin/lf'
 export BROWSER="$HOME"/.local/bin/mybrowser
 export PRIVATE_BROWSER="$HOME"/.local/bin/mybrowser-private
 export TERMINAL_BROWSER="/usr/bin/w3m"
@@ -24,9 +29,9 @@ export SCREENSHOT="/usr/bin/flameshot gui"
 export PDFREADER='/usr/bin/zathura'
 # export MOZ_X11_EGL=1
 export WINIT_X11_SCALE_FACTOR='1'
-export FZF_DEFAULT_COMMAND='/usr/bin/find .'
+export FZF_DEFAULT_COMMAND='/usr/bin/fd .'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="/usr/bin/fd -t d ."
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 # Home directory clean up
@@ -54,7 +59,6 @@ umask 022
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-	echo '=========================================================' >> x.log
-  exec startx $XDG_CONFIG_HOME/X11/xinitrc -- -ardelay 200 -arinterval 30 >> x.log 2>&1
-	echo '=========================================================' >> x.log
+	echo '======================='"$(date)"'======================' >> "$XDG_CACHE_HOME"/x.log
+  exec startx $XDG_CONFIG_HOME/x11/xinitrc -- -ardelay 200 -arinterval 30 >> "$XDG_CACHE_HOME"/x.log 2>&1
 fi
