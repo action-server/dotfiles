@@ -24,13 +24,14 @@ alias \
 	freq800='sudo /usr/bin/cpupower frequency-set -u 800MHz' \
 	freq1200='sudo /usr/bin/cpupower frequency-set -u 1200MHz' \
 	freq1600='sudo /usr/bin/cpupower frequency-set -u 1600MHz' \
-	freq1900='sudo /usr/bin/cpupower frequency-set -d 1900MHz' \
-	freq2700='sudo /usr/bin/cpupower frequency-set -d 2700MHz' \
+	freq1900='sudo /usr/bin/cpupower frequency-set -u 1900MHz' \
+	freq2700='sudo /usr/bin/cpupower frequency-set -u 2700MHz' \
 	xo='f(){ /usr/bin/nohup /usr/bin/xdg-open "$@" >/dev/null 2>&1 & }; f' \
 	nh='f(){ /usr/bin/nohup "$@" >/dev/null 2>&1 & }; f' \
   mkd='/usr/bin/mkdir -pv' \
 	e='/usr/bin/ranger' \
 	mycc='/usr/bin/c99 -Wall -g -o binary' \
+	ta='tmux attach' \
 	t='$EDITOR ~/doc/TODO'
 
 # Fix
@@ -46,6 +47,7 @@ alias \
 	cdlinksync='cd ~/workspace/git/linksync' \
 	cdgit='cd ~/workspace/git' \
 	cdblog4j='cd ~/workspace/git/blog4j' \
+	cddrbandel='cd ~/workspace/dr-bandel' \
 	cdjameel='cd ~/workspace/git/jameel'
 
 # System
@@ -67,6 +69,7 @@ alias \
   gitb='/usr/bin/git branch' \
   gitd='/usr/bin/git diff' \
 	gitc='/usr/bin/git commit' \
+	gita='/usr/bin/git add' \
 	gitds='/usr/bin/git diff --staged'
 
 # Docker
@@ -85,7 +88,8 @@ alias \
 	paci='f(){ sudo /usr/bin/pacman -S "$@" && /usr/bin/notify-send "Pacman" "Package(s) installed"; }; f' \
   pacr='sudo /usr/bin/pacman -Rns' \
 	pacs='/usr/bin/pacman -Ss' \
-  pacu='sudo /usr/bin/pacman -Syyuu && /usr/bin/flatpak update --user --noninteractive && /usr/bin/notify-send "Package Manager" "System updated"'
+	pacw='sudo /usr/bin/pacman -Syuw --noconfirm && /usr/bin/flatpak update --assumeyes --no-deploy && /usr/bin/notify-send "Package Manager" "Update downloaded"' \
+  pacu='sudo /usr/bin/pacman -Syu --noconfirm && /usr/bin/flatpak update --assumeyes && /usr/bin/notify-send "Package Manager" "System updated"'
 
 # Apt
 # alias \

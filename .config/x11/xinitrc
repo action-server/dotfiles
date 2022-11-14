@@ -1,13 +1,15 @@
 # Defaults
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
   [ -x "$f" ] && . "$f"
  done
  unset f
 fi
 
 # Xresources
-[ -f "$XDG_CONFIG_HOME"/x11/xresources ] && xrdb -merge "$XDG_CONFIG_HOME"/x11/xresources
+if [ -f "$XDG_CONFIG_HOME"/x11/xresources ]; then
+	xrdb -merge "$XDG_CONFIG_HOME"/x11/xresources
+fi
 
 # Keypress rate
 # xset r rate 200 30
@@ -16,7 +18,7 @@ fi
 # [ -f "$XDG_CONFIG_HOME"/x11/xmodmap ] && xmodmap -I"$XDG_CONFIG_HOME"/x11 "$XDG_CONFIG_HOME"/x11/xmodmap
 
 # Bluelight filter
-redshift -l 51:7 &
+pgrep redshift || redshift &
 
 # Audio control
 pgrep playerctld || playerctld daemon &
@@ -31,10 +33,11 @@ pgrep mpd || mpd &
 pgrep easyeffects || easyeffects --gapplication-service &
 
 # Display config
-autorandr -c &
+pgrep autorandr || autorandr -c
 
 # Wallpaper
-xwallpaper --stretch "$XDG_PICTURES_DIR"/wallpaper/stars.jpg --daemon &
+# xwallpaper --stretch "$XDG_PICTURES_DIR"/wallpaper/stars.jpg --daemon &
+pgrep hsetroot || hsetroot -solid black
 
 # DE/WM
 pgrep i3 || exec i3

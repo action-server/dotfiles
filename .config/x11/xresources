@@ -1,16 +1,16 @@
-! Xft.dpi: 96
-! Xft.rgba: rgb
-! Xft.lcdfilter: lcddefault
-! Xft.hintstyle:  hintfull
-! Xft.hinting: true
-! Xft.antialias: true
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: true
+Xft.antialias: true
 
-! *.font: monospace:size=10
+*.font: monospace:size=10
 
-! special
-! *.foreground: #93a1a1
-! *.background: #141c21
-! *.cursorColor: #afbfbf
+special
+*.foreground: #93a1a1
+*.background: #141c21
+*.cursorColor: #afbfbf
 
 ! black
 ! *.color0: #263640

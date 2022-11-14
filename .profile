@@ -18,7 +18,7 @@ export PAGER='/usr/bin/less'
 # export TERM='/usr/bin/alacritty'
 export TERMINAL='/usr/bin/alacritty'
 export TERMINAL_TMUX='/usr/bin/alacritty -e /usr/bin/tmux new-session -A -s main'
-export TERMINAL_SCRATCHPAD='/usr/bin/alacritty --class terminal_scratchpad'
+export TERMINAL_SCRATCHPAD='/usr/bin/alacritty --class terminal_scratchpad --command tmux new-session -A -s scratchpad'
 export TERMINAL_NEOMUTT='/usr/bin/alacritty -o window.opacity=1.0 -e /usr/bin/neomutt'
 export TERMINAL_NEWSBOAT='/usr/bin/alacritty -o window.opacity=1.0 -e /usr/bin/newsboat'
 export TERMINAL_LF='/usr/bin/alacritty -e /usr/bin/lf'
@@ -33,6 +33,7 @@ export FZF_DEFAULT_COMMAND='/usr/bin/fd .'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="/usr/bin/fd -t d ."
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+
 
 # Home directory clean up
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
@@ -60,5 +61,5 @@ umask 022
 
 if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
 	echo '======================='"$(date)"'======================' >> "$XDG_CACHE_HOME"/x.log
-  exec startx $XDG_CONFIG_HOME/x11/xinitrc -- -ardelay 200 -arinterval 30 >> "$XDG_CACHE_HOME"/x.log 2>&1
+  exec startx $XDG_CONFIG_HOME/x11/xinitrc >> "$XDG_CACHE_HOME"/x.log 2>&1
 fi
