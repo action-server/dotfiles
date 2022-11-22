@@ -1,0 +1,12 @@
+[
+	{
+		"command": "undo",
+    "key": "u",
+		"when": "editorFocus"
+	},
+	{
+		"command": "redo",
+    "key": "ctrl+r",
+		"when": "editorFocus"
+	}
+]

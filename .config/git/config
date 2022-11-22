@@ -1,7 +1,7 @@
 [user]
 	email = dev@action-server.com
 	name = Action
-	signingKey = 9816B2E6337AD199
+	signingKey = E084BFF047EFF010
 [init]
 	defaultBranch = master
 [commit]
