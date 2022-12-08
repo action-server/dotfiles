@@ -5,26 +5,38 @@ set -e
 # Set internal field separator
 IFS='
 '
-# Set script name
 SCRIPT_NAME="$(basename $0)"
-DIST_DIR="${HOME}"
+
+print_error(){
+	message="$1"
+	echo "${SCRIPT_NAME} - Error: ${message}" >&2
+}
 
 create_symbolic_link(){
-	directories="$(find . -name '\.git' -prune -o -type d -print)"
-	for directory in $directories; do
-		new_directory="$(printf '%s' "$directory" | sed 's/^\.\///' )"
-		mkdir -p "${DIST_DIR}/${new_directory}"
-	done
-
+	dist_dir="$1"
+	src_dir="$(pwd)"
 	files="$(find . \( -name "$SCRIPT_NAME" -o -name '\.git' -o -name '.gitignore' \) -prune -o -type f -print)"
+
 	for file in $files; do
-		new_file="$(printf '%s' "$file" | sed 's/^\.\///' )"
-		ln -sf "$(pwd)/${new_file}" "${DIST_DIR}/${new_file}"
+		file_path="$(printf "$file" | sed 's/^\.\///')"
+		dir_path="$(dirname $file_path)"
+		mkdir -p "${dist_dir}/${dir_path}"
+		ln -sf "${src_dir}/${file_path}" "${dist_dir}/${file_path}"
 	done
 }
 
 main(){
-	create_symbolic_link
+	if [ "$#" -ne 1 ]; then
+		print_error 'Usage: ./install.sh <destination_full_path>'
+		exit 1
+	fi
+
+	if [ ! -d "$1" ]; then
+		print_error "'${1}' is not a directory."
+		exit 1
+	fi
+
+	create_symbolic_link "$1"
 }
 
 main "$@"
