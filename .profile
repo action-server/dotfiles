@@ -59,7 +59,13 @@ umask 022
 
 [ -f ~/.bashrc ] && . ~/.bashrc
 
-if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-	echo '======================='"$(date)"'======================' >> "$XDG_CACHE_HOME"/x.log
-  exec startx $XDG_CONFIG_HOME/x11/xinitrc >> "$XDG_CACHE_HOME"/x.log 2>&1
+if [ -n "${DISPLAY}" ]; then
+	return
 fi
+
+if [ "$(tty)" != "/dev/tty1" ] && [ "$(tty)" != "/dev/tty3" ]; then
+	return
+fi
+
+echo '======================='"$(date)"'======================' >> "$XDG_CACHE_HOME"/x.log
+exec startx $XDG_CONFIG_HOME/x11/xinitrc >> "$XDG_CACHE_HOME"/x.log 2>&1
