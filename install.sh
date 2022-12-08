@@ -5,7 +5,7 @@ set -e
 # Set internal field separator
 IFS='
 '
-SCRIPT_NAME="$(basename $0)"
+SCRIPT_NAME="$(basename "$0")"
 
 print_error(){
 	message="$1"
@@ -18,8 +18,8 @@ create_symbolic_link(){
 	files="$(find . \( -name "$SCRIPT_NAME" -o -name '\.git' -o -name '.gitignore' \) -prune -o -type f -print)"
 
 	for file in $files; do
-		file_path="$(printf "$file" | sed 's/^\.\///')"
-		dir_path="$(dirname $file_path)"
+		file_path="$(printf '%s' "$file" | sed 's/^\.\///')"
+		dir_path="$(dirname "$file_path")"
 		mkdir -p "${dist_dir}/${dir_path}"
 		ln -sf "${src_dir}/${file_path}" "${dist_dir}/${file_path}"
 	done
