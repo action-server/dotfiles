@@ -1,0 +1,6 @@
+# i3 config file (v4)
+
+# Super key
+set $mod Mod4
+
+include ~/.config/i3/conf.d/*.conf

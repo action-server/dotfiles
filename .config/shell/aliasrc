@@ -6,7 +6,7 @@ aliasrc="$XDG_CONFIG_HOME"/shell/aliasrc
 # Shortcut
 alias \
   balias='[ -f $aliasrc ] && $EDITOR $aliasrc && . $aliasrc' \
-	rm='f(){ /usr/bin/echo use del!; }; f' \
+	rm='f(){ /bin/echo use del!; }; f' \
 	n='/usr/bin/newsboat' \
   m='/usr/bin/neomutt' \
   mutt='/usr/bin/neomutt' \
@@ -39,20 +39,9 @@ alias \
   ssh='TERM=''xterm-256color'' ssh' \
 	mbsync='/usr/bin/mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 
-# Workspace
-alias \
-  cduni='cd	~/studyspace/uni' \
-	s='cd ~/.local/bin' \
-	cdaction='cd ~/workspace/website/action-server.com' \
-	cdlinksync='cd ~/workspace/git/linksync' \
-	cdgit='cd ~/workspace/git' \
-	cdblog4j='cd ~/workspace/git/blog4j' \
-	cddrbandel='cd ~/workspace/dr-bandel' \
-	cdjameel='cd ~/workspace/git/jameel'
-
 # System
 alias \
-  ls='/usr/bin/ls --color=auto --group-directories-first' \
+  ls='/bin/ls --color=auto --group-directories-first' \
   la='ls -A' \
   l='ls -alh' \
   ll='ls -alhF' \

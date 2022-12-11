@@ -22,8 +22,9 @@ export TERMINAL_SCRATCHPAD='/usr/bin/alacritty --class terminal_scratchpad --com
 export TERMINAL_NEOMUTT='/usr/bin/alacritty -o window.opacity=1.0 -e /usr/bin/neomutt'
 export TERMINAL_NEWSBOAT='/usr/bin/alacritty -o window.opacity=1.0 -e /usr/bin/newsboat'
 export TERMINAL_LF='/usr/bin/alacritty -e /usr/bin/lf'
-export BROWSER="$HOME"/.local/bin/mybrowser
-export PRIVATE_BROWSER="$HOME"/.local/bin/mybrowser-private
+export BROWSER='brave'
+export PRIVATE_BROWSER='brave --incognito'
+# export PRIVATE_BROWSER='firefox --private-window'
 export TERMINAL_BROWSER="/usr/bin/w3m"
 export SCREENSHOT="/usr/bin/flameshot gui"
 export PDFREADER='/usr/bin/zathura'
