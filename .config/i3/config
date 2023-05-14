@@ -3,4 +3,10 @@
 # Super key
 set $mod Mod4
 
-include ~/.config/i3/conf.d/*.conf
+include ~/.config/i3/conf.d/main.conf
+include ~/.config/i3/conf.d/float.conf
+include ~/.config/i3/conf.d/bind.conf
+include ~/.config/i3/conf.d/app.conf
+include ~/.config/i3/conf.d/mode.conf
+include ~/.config/i3/conf.d/gap.conf
+include ~/.config/i3/conf.d/bar.conf

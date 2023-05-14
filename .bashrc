@@ -11,5 +11,8 @@ export HISTSIZE=1000000 # Limit shell history
 # set -o vi # Use vim keybindings for readline
 # bind -x '"\C-l": clear' # bind <ctrl+l> to clear, to override vim binding
 
-# Check if .bash_aliases is available and source it.
-[ -f $XDG_CONFIG_HOME/shell/aliasrc ] && . $XDG_CONFIG_HOME/shell/aliasrc
+# Source aliases
+[ -r "${XDG_CONFIG_HOME}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME}/shell/aliasrc"
+
+# Source argcomplete python completion
+[ -r "${XDG_DATA_HOME}/bash/python-argcomplete"   ] && . "${XDG_DATA_HOME}/bash/python-argcomplete"

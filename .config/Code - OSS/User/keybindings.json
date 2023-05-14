@@ -2,11 +2,11 @@
 	{
 		"command": "undo",
     "key": "u",
-		"when": "editorFocus"
+		"when": "editorFocus && neovim.mode != insert"
 	},
 	{
 		"command": "redo",
     "key": "ctrl+r",
-		"when": "editorFocus"
+		"when": "editorFocus && neovim.mode != insert"
 	}
 ]

@@ -1,12 +1,12 @@
 #!/bin/sh
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-aliasrc="$XDG_CONFIG_HOME"/shell/aliasrc
+aliasrc="${XDG_CONFIG_HOME}"/shell/aliasrc
 
 # Shortcut
 alias \
   balias='[ -f $aliasrc ] && $EDITOR $aliasrc && . $aliasrc' \
-	rm='f(){ /bin/echo use del!; }; f' \
+	rm='f(){ echo use del!; }; f' \
 	n='/usr/bin/newsboat' \
   m='/usr/bin/neomutt' \
   mutt='/usr/bin/neomutt' \
@@ -31,8 +31,8 @@ alias \
   mkd='/usr/bin/mkdir -pv' \
 	e='/usr/bin/ranger' \
 	mycc='/usr/bin/c99 -Wall -g -o binary' \
-	ta='tmux attach' \
-	t='$EDITOR ~/doc/TODO'
+	t='tmux attach' \
+	todo='$EDITOR ~/doc/TODO'
 
 # Fix
 alias \
@@ -75,14 +75,7 @@ alias \
 # Pacman
 alias \
 	paci='f(){ sudo /usr/bin/pacman -S "$@" && /usr/bin/notify-send "Pacman" "Package(s) installed"; }; f' \
-  pacr='sudo /usr/bin/pacman -Rns' \
+	pacr='sudo /usr/bin/pacman -Rns' \
 	pacs='/usr/bin/pacman -Ss' \
-	pacw='sudo /usr/bin/pacman -Syuw --noconfirm && /usr/bin/flatpak update --assumeyes --no-deploy && /usr/bin/notify-send "Package Manager" "Update downloaded"' \
-  pacu='sudo /usr/bin/pacman -Syu --noconfirm && /usr/bin/flatpak update --assumeyes && /usr/bin/notify-send "Package Manager" "System updated"'
-
-# Apt
-# alias \
-# sai='sudo /usr/bin/apt install' \
-# sar='sudo /usr/bin/apt remove' \
-# sau='sudo /usr/bin/apt update && sudo /usr/bin/apt upgrade
-# saar='sudo /usr/bin/apt autoremove' \
+	pacw='sudo /usr/bin/pacman -Syuw --noconfirm; /usr/bin/flatpak update --assumeyes --no-deploy; /usr/bin/notify-send "Package Manager" "Updates downloaded"' \
+	pacu='sudo /usr/bin/pacman -Syu --noconfirm; /usr/bin/flatpak update --assumeyes; /usr/bin/notify-send "Package Manager" "System updated"'

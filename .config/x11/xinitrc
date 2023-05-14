@@ -11,33 +11,7 @@ if [ -f "$XDG_CONFIG_HOME"/x11/xresources ]; then
 	xrdb -merge "$XDG_CONFIG_HOME"/x11/xresources
 fi
 
-# Keypress rate
-# xset r rate 200 30
-
-# xmodmap
-# [ -f "$XDG_CONFIG_HOME"/x11/xmodmap ] && xmodmap -I"$XDG_CONFIG_HOME"/x11 "$XDG_CONFIG_HOME"/x11/xmodmap
-
-# Bluelight filter
-pgrep redshift || redshift &
-
-# Audio control
-pgrep playerctld || playerctld daemon &
-# pgrep mpris-proxy || mpris-proxy &
-# pgrep -f mpDris2 || mpDris2 &
-pgrep mpd || mpd &
-
-# USB Hotplug
-# pgrep udiskie || udiskie &
-
-# Audio processing
-pgrep easyeffects || easyeffects --gapplication-service &
-
-# Display config
 pgrep autorandr || autorandr -c
-
-# Wallpaper
-# xwallpaper --stretch "$XDG_PICTURES_DIR"/wallpaper/stars.jpg --daemon &
-pgrep hsetroot || hsetroot -solid black
 
 # DE/WM
 pgrep i3 || exec i3

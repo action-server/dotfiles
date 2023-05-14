@@ -3,5 +3,8 @@
     "explorer.excludeGitIgnore": true,
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "keyboard.dispatch": "keyCode",
-    "scss.lint.unknownAtRules": "ignore"
+    "scss.lint.unknownAtRules": "ignore",
+    "editor.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true
 }
