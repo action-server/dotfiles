@@ -9,7 +9,7 @@ SCRIPT_NAME="$(basename "$0")"
 
 print_error(){
 	message="$1"
-	printf '%s' "Error: ${message}" >&2
+	printf '%s\n' "Error: ${message}" >&2
 
 }
 

@@ -1,0 +1,6 @@
+[Context]
+filesystems=!home;
+
+[Environment]
+GTK_THEME=Adwaita:dark
+MANGOHUD_CONFIG=no_display
