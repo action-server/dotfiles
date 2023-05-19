@@ -68,6 +68,8 @@ set_umask(){
 create_directories(){
 	mkdir -p "${XDG_DATA_HOME}/bin"
 	mkdir -p "${XDG_DATA_HOME}/bash"
+	mkdir -p "${XDG_CONFIG_HOME}"
+	mkdir -p "${XDG_CACHE_HOME}"
 }
 
 source_shell(){
