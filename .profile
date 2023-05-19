@@ -12,17 +12,18 @@ assign_env(){
 	export XDG_VIDEOS_DIR="${HOME}/media/vid"
 	export XDG_TEMPLATES_DIR="${HOME}/dl"
 	export XDG_PUBLICSHARE_DIR="${HOME}/dl"
+	export XDG_PRIVATE_DIR="${HOME}/private"
 
 	# Programs
 	export EDITOR='nvim'
 	export VISUAL='nvim'
 	export PAGER='less'
 	export TERMINAL='alacritty'
-	export TERMINAL_TMUX='alacritty -e tmux new-session -A'
+	export TERMINAL_TMUX='alacritty --command tmux new-session -A'
 	export TERMINAL_SCRATCHPAD='alacritty --class terminal_scratchpad --command tmux new-session -A'
-	export TERMINAL_NEOMUTT='alacritty -o window.opacity=1.0 -e neomutt'
-	export TERMINAL_NEWSBOAT='alacritty -o window.opacity=1.0 -e newsboat'
-	export TERMINAL_LF='alacritty -e lf'
+	export TERMINAL_NEOMUTT='alacritty --option window.opacity=1.0 --command neomutt'
+	export TERMINAL_NEWSBOAT="alacritty --option window.opacity=1.0 --command newsboat --url-file ${XDG_PRIVATE_DIR}/newsboat/urls"
+	export TERMINAL_LF='alacritty --command lf'
 	export BROWSER='brave'
 	export PRIVATE_BROWSER='brave --incognito'
 	export TERMINAL_BROWSER='w3m'
@@ -30,7 +31,7 @@ assign_env(){
 	export PDFREADER='zathura'
 	export FZF_DEFAULT_COMMAND='fd .'
 	export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-	export FZF_ALT_C_COMMAND='fd -t d .'
+	export FZF_ALT_C_COMMAND='fd --type d .'
 
 	# Fixes
 	export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/podman/podman.sock" # Podman docker-compose support
@@ -66,10 +67,11 @@ set_umask(){
 }
 
 create_directories(){
-	mkdir -p "${XDG_DATA_HOME}/bin"
-	mkdir -p "${XDG_DATA_HOME}/bash"
-	mkdir -p "${XDG_CONFIG_HOME}"
-	mkdir -p "${XDG_CACHE_HOME}"
+	mkdir --parents "${XDG_DATA_HOME}/bin"
+	mkdir --parents "${XDG_DATA_HOME}/bash"
+	mkdir --parents "${XDG_CONFIG_HOME}"
+	mkdir --parents "${XDG_CACHE_HOME}"
+	mkdir --parents "${XDG_PRIVATE_DIR}"
 }
 
 source_shell(){
