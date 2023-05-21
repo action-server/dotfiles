@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Terminate already running polybar instances
-# /usr/bin/polybar-msg cmd quit
+/usr/bin/polybar-msg cmd quit
