@@ -1,43 +1,46 @@
 #!/bin/sh
 
+# Author:       Action <dev@action-server.com>
+# License:      GNU GPLv3
+# Description:  A collection of aliases
+
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-aliasrc="${XDG_CONFIG_HOME}"/shell/aliasrc
+ALIASRC="${XDG_CONFIG_HOME}"/shell/aliasrc
 
 # Shortcut
 alias \
-  balias='[ -f $aliasrc ] && $EDITOR $aliasrc && . $aliasrc' \
+  balias="[ -f ${ALIASRC} ] && ${EDITOR} ${ALIASRC} && . ${ALIASRC}" \
 	rm='f(){ echo use del!; }; f' \
-	n='/usr/bin/newsboat' \
-  m='/usr/bin/neomutt' \
-  mutt='/usr/bin/neomutt' \
-  v='/usr/bin/nvim' \
-  vim='/usr/bin/nvim' \
-  copy='/usr/bin/xclip -selection clipboard' \
-  myip='/usr/bin/curl -L https://ipinfo.io/ip' \
-  del='/usr/bin/trash-put' \
-  cpu='/usr/bin/cpupower frequency-info' \
-  powersave='sudo /usr/bin/cpupower frequency-set -g powersave' \
-  performance='sudo /usr/bin/cpupower frequency-set -g performance' \
-  ondemand='sudo /usr/bin/cpupower frequency-set -g ondemand' \
-  conservative='sudo /usr/bin/cpupower frequency-set -g conservative' \
-  schedutil='sudo /usr/bin/cpupower frequency-set -g schedutil' \
-	freq800='sudo /usr/bin/cpupower frequency-set -u 800MHz' \
-	freq1200='sudo /usr/bin/cpupower frequency-set -u 1200MHz' \
-	freq1600='sudo /usr/bin/cpupower frequency-set -u 1600MHz' \
-	freq1900='sudo /usr/bin/cpupower frequency-set -u 1900MHz' \
-	freq2700='sudo /usr/bin/cpupower frequency-set -u 2700MHz' \
-	xo='f(){ /usr/bin/nohup /usr/bin/xdg-open "$@" >/dev/null 2>&1 & }; f' \
-	nh='f(){ /usr/bin/nohup "$@" >/dev/null 2>&1 & }; f' \
-  mkd='/usr/bin/mkdir -pv' \
-	e='/usr/bin/ranger' \
-	mycc='/usr/bin/c99 -Wall -g -o binary' \
+	n='newsboat' \
+  m='neomutt' \
+  mutt='neomutt' \
+  v='nvim' \
+  vim='nvim' \
+  copy='xclip -selection clipboard' \
+  myip='curl -L https://ipinfo.io/ip' \
+  del='trash-put' \
+  cpu='cpupower frequency-info' \
+  powersave='sudo cpupower frequency-set -g powersave' \
+  performance='sudo cpupower frequency-set -g performance' \
+  ondemand='sudo cpupower frequency-set -g ondemand' \
+  conservative='sudo cpupower frequency-set -g conservative' \
+  schedutil='sudo cpupower frequency-set -g schedutil' \
+	freq800='sudo cpupower frequency-set -u 800MHz' \
+	freq1200='sudo cpupower frequency-set -u 1200MHz' \
+	freq1600='sudo cpupower frequency-set -u 1600MHz' \
+	freq1900='sudo cpupower frequency-set -u 1900MHz' \
+	freq2700='sudo cpupower frequency-set -u 2700MHz' \
+	xo='f(){ nohup xdg-open "${@}" >/dev/null 2>&1 & }; f' \
+	nh='f(){ nohup "${@}" >/dev/null 2>&1 & }; f' \
+	mycc='c99 -Wall -g -o binary' \
 	t='tmux attach' \
-	todo='$EDITOR ~/doc/TODO'
+	todo="${EDITOR} ${XDG_DOCUMENTS_DIR}/TODO" \
+	alarm='f(){ termdown "${@}" && yes "Alarm" | festival --tts; }; f'
 
 # Fix
 alias \
   ssh='TERM=''xterm-256color'' ssh' \
-	mbsync='/usr/bin/mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
+	mbsync="mbsync -c ${XDG_CONFIG_HOME}/isync/mbsyncrc"
 
 # System
 alias \
@@ -45,37 +48,37 @@ alias \
   la='ls -A' \
   l='ls -alh' \
   ll='ls -alhF' \
-  grep='/usr/bin/grep --color=auto' \
-  diff='/usr/bin/diff --color=auto' \
-	free='/usr/bin/free -h'
+  grep='grep --color=auto' \
+  diff='diff --color=auto' \
+	free='free -h'
 
 # Git
 alias \
-  gits='/usr/bin/git status' \
-  g='/usr/bin/git status' \
-  gitl='/usr/bin/git log' \
-  gitch='/usr/bin/git checkout' \
-  gitb='/usr/bin/git branch' \
-  gitd='/usr/bin/git diff' \
-	gitc='/usr/bin/git commit' \
-	gita='/usr/bin/git add' \
-	gitds='/usr/bin/git diff --staged'
+  gits='git status' \
+  g='git status' \
+  gitl='git log' \
+  gitch='git checkout' \
+  gitb='git branch' \
+  gitd='git diff' \
+	gitc='git commit' \
+	gita='git add' \
+	gitds='git diff --staged'
 
 # Docker
 alias \
-  dkps='/usr/bin/docker ps -a' \
-  dkr='/usr/bin/docker run' \
-  dks='/usr/bin/docker stop' \
-  dkrm='/usr/bin/docker rm' \
-  dkrmi='/usr/bin/docker rmi' \
-  dkcu='/usr/bin/docker-compose up' \
-  dkcd='/usr/bin/docker-compose down' \
-  dkcr='/usr/bin/docker-compose restart'
+  dkps='docker ps -a' \
+  dkr='docker run' \
+  dks='docker stop' \
+  dkrm='docker rm' \
+  dkrmi='docker rmi' \
+  dkcu='docker-compose up' \
+  dkcd='docker-compose down' \
+  dkcr='docker-compose restart'
 
 # Pacman
 alias \
-	paci='f(){ sudo /usr/bin/pacman -S "$@" && /usr/bin/notify-send "Pacman" "Package(s) installed"; }; f' \
-	pacr='sudo /usr/bin/pacman -Rns' \
-	pacs='/usr/bin/pacman -Ss' \
-	pacw='sudo /usr/bin/pacman -Syuw --noconfirm; /usr/bin/flatpak update --assumeyes --no-deploy; /usr/bin/notify-send "Package Manager" "Updates downloaded"' \
-	pacu='sudo /usr/bin/pacman -Syu --noconfirm; /usr/bin/flatpak update --assumeyes; /usr/bin/notify-send "Package Manager" "System updated"'
+	paci='f(){ sudo pacman -S "${@}" && notify-send "Pacman" "Package(s) installed"; }; f' \
+	pacr='sudo pacman -Rns' \
+	pacs='pacman -Ss' \
+	pacw='sudo pacman -Syuw --noconfirm; flatpak update --assumeyes --no-deploy; notify-send "Package Manager" "Updates downloaded"' \
+	pacu='sudo pacman -Syu --noconfirm; flatpak update --assumeyes; notify-send "Package Manager" "System updated"'

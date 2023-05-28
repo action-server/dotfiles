@@ -1,15 +1,23 @@
-source /usr/share/fzf/key-bindings.bash # Fuzzy finder key bindings
-source /usr/share/fzf/completion.bash # Fuzzy finder auto completion
+#!/usr/bin/env bash
 
-eval "$(starship init bash)" # Starship prompt
+# Author:       Action <dev@action-server.com>
+# License:      GNU GPLv3
+# Description:  Bash configuration file
 
-shopt -s autocd # Auto change directory when entering path
+# Fuzzy finder key bindings
+source /usr/share/fzf/key-bindings.bash
 
-export HISTCONTROL=erasedups # Stop logging of repeated identical commands
-export HISTSIZE=1000000 # Limit shell history
+# Fuzzy finder auto completion
+source /usr/share/fzf/completion.bash
 
-# set -o vi # Use vim keybindings for readline
-# bind -x '"\C-l": clear' # bind <ctrl+l> to clear, to override vim binding
+# Starship prompt
+eval "$(starship init bash)"
+
+# Stop logging of repeated identical commands
+export HISTCONTROL=erasedups
+
+# Limit shell history
+export HISTSIZE=1000000
 
 # Source aliases
 [ -r "${XDG_CONFIG_HOME}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME}/shell/aliasrc"

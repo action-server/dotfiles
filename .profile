@@ -1,3 +1,9 @@
+#!/bin/sh
+
+# Author:       Action <dev@action-server.com>
+# License:      GNU GPLv3
+# Description:  Shell profile
+
 assign_env(){
 	# XDG
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -33,10 +39,11 @@ assign_env(){
 	export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 	export FZF_ALT_C_COMMAND='fd --type d .'
 
-	# Fixes
-	export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/podman/podman.sock" # Podman docker-compose support
+	#	Fixes
+	export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/podman/podman.sock" 
 	export GTK_IM_MODULE='fcitx'
 	export QT_IM_MODULE='fcitx'
+	export SDL_IM_MODULE='fcitx'
 	export XMODIFIERS='@im=fcitx'
 
 	# Home directory clean up
@@ -57,6 +64,7 @@ assign_env(){
 	export PUB_CACHE="${XDG_CACHE_HOME}/pub"
 	export GOPATH="${XDG_DATA_HOME}/go"
 	export CALCHISTFILE="${XDG_CACHE_HOME}/calc_history"
+	export VSCODE_PORTABLE="${XDG_CONFIG_HOME}/vscode"
 
 	# PATH
 	export PATH="${XDG_DATA_BIN}:${PATH}"
@@ -67,11 +75,13 @@ set_umask(){
 }
 
 create_directories(){
-	mkdir --parents "${XDG_DATA_HOME}/bin"
+	mkdir --parents "${XDG_DATA_HOME}/gnupg"
 	mkdir --parents "${XDG_DATA_HOME}/bash"
 	mkdir --parents "${XDG_CONFIG_HOME}"
 	mkdir --parents "${XDG_CACHE_HOME}"
 	mkdir --parents "${XDG_PRIVATE_DIR}"
+	mkdir --parents "${XDG_DOWNLOAD_DIR}"
+	mkdir --parents "${XDG_DOCUMENTS_DIR}"
 }
 
 source_shell(){

@@ -1,0 +1,27 @@
+[
+	{
+		"command": "undo",
+		"key": "u",
+		"when": "editorFocus && neovim.mode != insert"
+	},
+	{
+		"command": "redo",
+		"key": "ctrl+r",
+		"when": "editorFocus && neovim.mode != insert"
+	},
+	{
+		"command": "workbench.action.focusSideBar",
+		"key": "space e",
+		"when": "(!inputFocus && !textInputFocus) || (editorFocus && neovim.mode != insert)"
+	},
+	{
+		"command": "workbench.action.focusActiveEditorGroup",
+		"key": "space e",
+		"when": "!inputFocus && !textInputFocus && sideBarFocus"
+	},
+	{
+		"command": "workbench.action.toggleZenMode",
+		"key": "space f",
+		"when": "(!inputFocus && !textInputFocus) || (editorFocus && neovim.mode != insert)"
+	}
+]

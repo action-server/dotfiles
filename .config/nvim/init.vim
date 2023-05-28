@@ -31,15 +31,14 @@ set undodir=~/.local/share/nvim/undo
 set undofile
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
-Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
+Plug 'psliwka/vim-smoothie'
+Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
