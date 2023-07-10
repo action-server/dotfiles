@@ -1,8 +1,5 @@
 # i3 config file (v4)
 
-# Super key
-set $mod Mod4
-
 include ~/.config/i3/conf.d/main.conf
 include ~/.config/i3/conf.d/float.conf
 include ~/.config/i3/conf.d/bind.conf
@@ -10,3 +7,53 @@ include ~/.config/i3/conf.d/app.conf
 include ~/.config/i3/conf.d/mode.conf
 include ~/.config/i3/conf.d/gap.conf
 include ~/.config/i3/conf.d/bar.conf
+
+set $mod Mod4
+
+set $1 10
+set $2 11
+set $3 12
+set $4 13
+set $5 14
+set $6 15
+set $7 16
+set $8 17
+set $9 18
+set $0 19
+
+set $q 24
+set $w 25
+set $e 26
+set $r 27
+set $t 28
+set $y 29
+set $u 30
+set $i 31
+set $o 32
+set $p 33
+set $a 38
+set $s 39
+set $d 40
+set $f 41
+set $g 42
+set $h 43
+set $j 44
+set $k 45
+set $l 46
+set $z 52
+set $x 53
+set $c 54
+set $v 55
+set $b 56
+set $n 57
+set $m 58
+
+set $return 36
+set $semicolon 47
+set $comma 59
+set $period 60
+set $space 65
+set $escape 66
+set $print 107
+set $minus 20
+set $plus 21

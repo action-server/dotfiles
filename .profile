@@ -12,8 +12,8 @@ assign_env(){
 	export XDG_DATA_BIN="${HOME}/.local/bin"
 	export XDG_DESKTOP_DIR="${HOME}/dl"
 	export XDG_DOWNLOAD_DIR="${HOME}/dl"
-	export XDG_DOCUMENTS_DIR="${HOME}/doc"
 	export XDG_MUSIC_DIR="${HOME}/media/aud"
+	export XDG_DOCUMENTS_DIR="${HOME}/media/doc"
 	export XDG_PICTURES_DIR="${HOME}/media/pic"
 	export XDG_VIDEOS_DIR="${HOME}/media/vid"
 	export XDG_TEMPLATES_DIR="${HOME}/dl"
@@ -71,21 +71,20 @@ assign_env(){
 }
 
 set_umask(){
-	umask 077
+	umask 0022
 }
 
 create_directories(){
-	mkdir --parents "${XDG_DATA_HOME}/gnupg"
-	mkdir --parents "${XDG_DATA_HOME}/bash"
-	mkdir --parents "${XDG_CONFIG_HOME}"
-	mkdir --parents "${XDG_CACHE_HOME}"
-	mkdir --parents "${XDG_PRIVATE_DIR}"
-	mkdir --parents "${XDG_DOWNLOAD_DIR}"
-	mkdir --parents "${XDG_DOCUMENTS_DIR}"
+	mkdir -p "${XDG_DATA_HOME}/gnupg"
+	mkdir -p "${XDG_DATA_HOME}/bash"
+	mkdir -p "${XDG_CONFIG_HOME}"
+	mkdir -p "${XDG_PRIVATE_DIR}"
+	mkdir -p "${XDG_DOWNLOAD_DIR}"
+	mkdir -p "${XDG_DOCUMENTS_DIR}"
 }
 
 source_shell(){
-	. ~/.bashrc
+	. "${HOME}/.bashrc"
 }
 
 start_window_system(){
@@ -97,8 +96,7 @@ start_window_system(){
 		return
 	fi
 
-	echo "=======================$(date)======================" >> "${XDG_CACHE_HOME}/xorg.log"
-	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty >> "${XDG_CACHE_HOME}/xorg.log" 2>&1
+	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty
 }
 
 main(){
