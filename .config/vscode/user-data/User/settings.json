@@ -14,5 +14,6 @@
 	"zenMode.hideLineNumbers": false,
 	"zenMode.fullScreen": false,
 	"editor.lineNumbers": "relative",
-	"zenMode.centerLayout": false
+	"zenMode.centerLayout": false,
+	"workbench.colorTheme": "Visual Studio Dark"
 }

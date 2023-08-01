@@ -43,9 +43,9 @@ Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 set termguicolors
-set background=dark
-let g:gruvbox_contrast_light = 'soft'
-let g:gruvbox_contrast_dark = 'soft'
+set background=light
+let g:gruvbox_contrast_light = 'medium'
+let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
 nnoremap <esc> :nohl <CR>
 nnoremap <c-p> :FZF <CR>
