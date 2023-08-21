@@ -1,17 +1,43 @@
-# Defaults
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
+#!/bin/sh
 
-# Xresources
-if [ -f "$XDG_CONFIG_HOME"/x11/xresources ]; then
-	xrdb -merge "$XDG_CONFIG_HOME"/x11/xresources
-fi
+source_xinit_default(){
+	file="${1}"
 
-pgrep autorandr || autorandr -c
+	if [ ! -x "${file}" ]; then
+		return
+	fi
 
-# DE/WM
-pgrep i3 || exec i3
+	. "${file}"
+}
+
+source_all_xinit_defaults(){
+	if [ ! -d /etc/X11/xinit/xinitrc.d ]; then
+		return
+	fi
+
+	for file in /etc/X11/xinit/xinitrc.d/?*.sh; do
+		source_xinit_default "${file}"
+	done
+}
+
+run_xrdb(){
+	if [ ! -f "${XDG_CONFIG_HOME}/x11/xresources" ]; then
+		return
+	fi
+
+	xrdb -merge "${XDG_CONFIG_HOME}/x11/xresources"
+}
+
+run_programs(){
+	pgrep autorandr || autorandr -c
+
+	pgrep i3 || exec i3
+}
+
+main(){
+	source_all_xinit_defaults
+	run_xrdb
+	run_programs
+}
+
+main "${@}"

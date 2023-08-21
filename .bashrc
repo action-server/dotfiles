@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Author:       Action <dev@action-server.com>
 # License:      GNU GPLv3
 # Description:  Bash configuration file
@@ -20,7 +18,6 @@ export HISTCONTROL=erasedups
 export HISTSIZE=1000000
 
 # Source aliases
-[ -r "${XDG_CONFIG_HOME}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME}/shell/aliasrc"
-
-# Source argcomplete python completion
-[ -r "${XDG_DATA_HOME}/bash/python-argcomplete"   ] && . "${XDG_DATA_HOME}/bash/python-argcomplete"
+if [ -x "${XDG_CONFIG_HOME}/shell/aliasrc" ]; then
+	. "${XDG_CONFIG_HOME}/shell/aliasrc"
+fi

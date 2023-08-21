@@ -1,13 +1,8 @@
-#!/bin/sh
-
 # Author:       Action <dev@action-server.com>
 # License:      GNU GPLv3
 # Description:  Shell profile
 
 assign_env(){
-	# Theme
-	export THEME='gruvbox-dark'
-
 	# XDG
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_CACHE_HOME="${HOME}/.cache"
@@ -90,10 +85,6 @@ source_shell(){
 	. "${HOME}/.bashrc"
 }
 
-source_theme(){
-	. "${XDG_CONFIG_HOME}/themes/${THEME}"
-}
-
 start_window_system(){
 	if [ -n "${DISPLAY}" ]; then
 		return
@@ -111,7 +102,6 @@ main(){
 	set_umask
 	create_directories
 	source_shell
-	source_theme
 	start_window_system
 }
 
