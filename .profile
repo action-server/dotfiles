@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Author:       Action <dev@action-server.com>
 # License:      GNU GPLv3
 # Description:  Shell profile
@@ -94,7 +96,7 @@ start_window_system(){
 		return
 	fi
 
-	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty
+	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty > "${XDG_CACHE_HOME}/xorg.log" 2>&1
 }
 
 main(){

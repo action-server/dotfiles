@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Author:       Action <dev@action-server.com>
+# License:      GNU GPLv3
+# Description:  X11 init file
+
 source_xinit_default(){
 	file="${1}"
 
@@ -29,9 +33,11 @@ run_xrdb(){
 }
 
 run_programs(){
-	pgrep autorandr || autorandr -c
+	autorandr -c
 
-	pgrep i3 || exec i3
+	sxhkd -m 1 &
+
+	exec i3
 }
 
 main(){

@@ -25,17 +25,19 @@ alias \
   ondemand='sudo cpupower frequency-set -g ondemand' \
   conservative='sudo cpupower frequency-set -g conservative' \
   schedutil='sudo cpupower frequency-set -g schedutil' \
+	freq400='sudo cpupower frequency-set -u 400MHz' \
 	freq800='sudo cpupower frequency-set -u 800MHz' \
 	freq1200='sudo cpupower frequency-set -u 1200MHz' \
+	freq1400='sudo cpupower frequency-set -u 1400MHz' \
 	freq1600='sudo cpupower frequency-set -u 1600MHz' \
 	freq1900='sudo cpupower frequency-set -u 1900MHz' \
-	freq2700='sudo cpupower frequency-set -u 2700MHz' \
+	freq6000='sudo cpupower frequency-set -u 2700MHz' \
 	xo='f(){ nohup xdg-open "${@}" >/dev/null 2>&1 & }; f' \
 	nh='f(){ nohup "${@}" >/dev/null 2>&1 & }; f' \
 	mycc='c99 -Wall -g -o binary' \
 	t='tmux attach' \
 	todo="${EDITOR} ${XDG_DOCUMENTS_DIR}/TODO" \
-	alarm='f(){ termdown "${@}" && yes "Alarm" | festival --tts; }; f'
+	alarm='f(){ termdown "${@}" && yes "Alarm" | espeak; }; f'
 
 # Fix
 alias \

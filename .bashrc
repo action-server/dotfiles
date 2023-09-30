@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Author:       Action <dev@action-server.com>
 # License:      GNU GPLv3
 # Description:  Bash configuration file

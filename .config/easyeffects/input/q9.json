@@ -1340,15 +1340,6 @@
             },
             "split-channels": false
         },
-        "filter#0": {
-            "bypass": false,
-            "frequency": 60.0,
-            "inertia": 20.0,
-            "input-gain": 0.0,
-            "mode": "12dB/oct Highpass",
-            "output-gain": 0.0,
-            "resonance": -3.0
-        },
         "gate#0": {
             "attack": 20.0,
             "bypass": false,
@@ -1399,7 +1390,6 @@
         },
         "plugins_order": [
             "speex#0",
-            "filter#0",
             "equalizer#1",
             "gate#0",
             "equalizer#0",
