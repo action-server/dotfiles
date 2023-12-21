@@ -20,21 +20,21 @@ XF86AudioPrev;
 	playerctl previous && dunstify -h string:x-dunst-stack-tag:playerctl "Player: previous"
 
 # Audio
-XF86AudioRaiseVolume;
-	pactl set-sink-volume @DEFAULT_SINK@ +5% && dunstify -h string:x-dunst-stack-tag:speaker "Speaker volume: $(pamixer --get-volume)%"
+super + F1;
+	pactl set-sink-volume @DEFAULT_SINK@ -1% && dunstify -h string:x-dunst-stack-tag:speaker "Speaker volume: $(pamixer --get-volume)%"
 
-XF86AudioLowerVolume;
-	pactl set-sink-volume @DEFAULT_SINK@ -5% && dunstify -h string:x-dunst-stack-tag:speaker "Speaker volume: $(pamixer --get-volume)%"
+super + F2;
+	pactl set-sink-volume @DEFAULT_SINK@ +1% && dunstify -h string:x-dunst-stack-tag:speaker "Speaker volume: $(pamixer --get-volume)%"
 
-XF86AudioMute;
+super + F3;
 	pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -h string:x-dunst-stack-tag:speaker "Speaker $(pactl get-sink-mute @DEFAULT_SINK@)"
 
-XF86AudioMicMute;
+super + F4;
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle && dunstify -h string:x-dunst-stack-tag:microphone "Microphone $(pactl get-source-mute @DEFAULT_SOURCE@)"
 
 # Brightness
-XF86MonBrightnessUp;
-	light -A 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(light -G))%"
-
-XF86MonBrightnessDown;
+super + F5;
 	light -U 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(light -G))%"
+
+super + F6;
+	light -A 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(light -G))%"

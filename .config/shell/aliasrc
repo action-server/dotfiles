@@ -10,9 +10,11 @@ ALIASRC="${XDG_CONFIG_HOME}"/shell/aliasrc
 # Shortcut
 alias \
   balias="[ -f ${ALIASRC} ] && ${EDITOR} ${ALIASRC} && . ${ALIASRC}" \
-	rm='f(){ echo use del!; }; f' \
+	rm='f(){ echo Use del!; }; f' \
+	make='f(){ echo Run in container!; }; f' \
 	n='newsboat' \
   m='neomutt' \
+	e='lf' \
   mutt='neomutt' \
   v='nvim' \
   vim='nvim' \
@@ -20,24 +22,18 @@ alias \
   myip='curl -L https://ipinfo.io/ip' \
   del='trash-put' \
   cpu='cpupower frequency-info' \
-  powersave='sudo cpupower frequency-set -g powersave' \
-  performance='sudo cpupower frequency-set -g performance' \
-  ondemand='sudo cpupower frequency-set -g ondemand' \
-  conservative='sudo cpupower frequency-set -g conservative' \
-  schedutil='sudo cpupower frequency-set -g schedutil' \
-	freq400='sudo cpupower frequency-set -u 400MHz' \
-	freq800='sudo cpupower frequency-set -u 800MHz' \
-	freq1200='sudo cpupower frequency-set -u 1200MHz' \
-	freq1400='sudo cpupower frequency-set -u 1400MHz' \
-	freq1600='sudo cpupower frequency-set -u 1600MHz' \
-	freq1900='sudo cpupower frequency-set -u 1900MHz' \
-	freq6000='sudo cpupower frequency-set -u 2700MHz' \
+  powersave='sudo cpupower frequency-set --governor powersave' \
+  performance='sudo cpupower frequency-set --governor performance' \
+  ondemand='sudo cpupower frequency-set --governor ondemand' \
+  conservative='sudo cpupower frequency-set --governor conservative' \
+  schedutil='sudo cpupower frequency-set --governor schedutil' \
+	freq='f(){ sudo cpupower frequency-set --max "${@}" }; f' \
 	xo='f(){ nohup xdg-open "${@}" >/dev/null 2>&1 & }; f' \
 	nh='f(){ nohup "${@}" >/dev/null 2>&1 & }; f' \
 	mycc='c99 -Wall -g -o binary' \
 	t='tmux attach' \
 	todo="${EDITOR} ${XDG_DOCUMENTS_DIR}/TODO" \
-	alarm='f(){ termdown "${@}" && yes "Alarm" | espeak; }; f'
+	alarm='f(){ termdown "${1}" && notify-send "Alarm" "${2}" && yes "${2:-Alarm}" | espeak || notify-send "Alarm cancelled" "${2}"; }; f'
 
 # Fix
 alias \
@@ -46,10 +42,10 @@ alias \
 
 # System
 alias \
-  ls='/bin/ls --color=auto --group-directories-first' \
+  ls='ls --color=auto --group-directories-first -v' \
   la='ls -A' \
-  l='ls -alh' \
-  ll='ls -alhF' \
+  l='ls -Alh' \
+  ll='ls -AlhF' \
   grep='grep --color=auto' \
   diff='diff --color=auto' \
 	free='free -h'
@@ -82,5 +78,5 @@ alias \
 	paci='f(){ sudo pacman -S "${@}" && notify-send "Pacman" "Package(s) installed"; }; f' \
 	pacr='sudo pacman -Rns' \
 	pacs='pacman -Ss' \
-	pacw='sudo pacman -Syuw --noconfirm; flatpak update --assumeyes --no-deploy; notify-send "Package Manager" "Updates downloaded"' \
-	pacu='sudo pacman -Syu --noconfirm; flatpak update --assumeyes; notify-send "Package Manager" "System updated"'
+	pacw='sudo pacman -Syuw --noconfirm && flatpak update --assumeyes --no-deploy && notify-send "Package Manager" "Updates downloaded" || notify-send "Package Manager" "Update failed"' \
+	pacu='sudo pacman -Syu --noconfirm && flatpak update --assumeyes && notify-send "Package Manager" "Updates installed" || notify-send "Package Manager" "Update failed"'

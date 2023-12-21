@@ -57,3 +57,5 @@ set $escape 66
 set $print 107
 set $minus 20
 set $plus 21
+
+set $f2 68

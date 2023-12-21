@@ -18,7 +18,6 @@ assign_env(){
 	export XDG_VIDEOS_DIR="${HOME}/media/vid"
 	export XDG_TEMPLATES_DIR="${HOME}/dl"
 	export XDG_PUBLICSHARE_DIR="${HOME}/dl"
-	export XDG_PRIVATE_DIR="${HOME}/private"
 
 	# Programs
 	export EDITOR='nvim'
@@ -28,16 +27,17 @@ assign_env(){
 	export TERMINAL_TMUX='alacritty --command tmux new-session -A'
 	export TERMINAL_SCRATCHPAD='alacritty --class terminal_scratchpad --command tmux new-session -A'
 	export TERMINAL_NEOMUTT='alacritty --option window.opacity=1.0 --command neomutt'
-	export TERMINAL_NEWSBOAT="alacritty --option window.opacity=1.0 --command newsboat --url-file ${XDG_PRIVATE_DIR}/newsboat/urls"
+	export TERMINAL_NEWSBOAT="alacritty --option window.opacity=1.0 --command newsboat --url-file ${XDG_DATA_HOME}/newsboat/urls"
 	export TERMINAL_LF='alacritty --command lf'
-	export BROWSER='brave'
-	export PRIVATE_BROWSER='brave --incognito'
+	export BROWSER='flatpak run com.brave.Browser'
+	export PRIVATE_BROWSER='flatpak run com.brave.Browser --incognito'
 	export TERMINAL_BROWSER='w3m'
 	export SCREENSHOT='flameshot gui'
 	export PDFREADER='zathura'
 	export FZF_DEFAULT_COMMAND='fd .'
 	export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 	export FZF_ALT_C_COMMAND='fd --type d .'
+	export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 	#	Fixes
 	export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/podman/podman.sock" 
@@ -48,7 +48,7 @@ assign_env(){
 
 	# Home directory clean up
 	export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
-	export HISTFILE="${XDG_DATA_HOME}/bash/history"
+	export HISTFILE="${XDG_DATA_HOME}/shell/history"
 	export BASH_COMPLETION_USER_FILE="${XDG_DATA_HOME}/bash/bash_completion"
 	export LESSKEY="${XDG_CONFIG_HOME}/less/lesskey"
 	export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
@@ -76,15 +76,11 @@ set_umask(){
 
 create_directories(){
 	mkdir -p "${XDG_DATA_HOME}/gnupg"
-	mkdir -p "${XDG_DATA_HOME}/bash"
+	mkdir -p "${XDG_DATA_HOME}/shell"
+	mkdir -p "${XDG_CACHE_HOME}/zsh"
 	mkdir -p "${XDG_CONFIG_HOME}"
-	mkdir -p "${XDG_PRIVATE_DIR}"
 	mkdir -p "${XDG_DOWNLOAD_DIR}"
 	mkdir -p "${XDG_DOCUMENTS_DIR}"
-}
-
-source_shell(){
-	. "${HOME}/.bashrc"
 }
 
 start_window_system(){
@@ -96,14 +92,17 @@ start_window_system(){
 		return
 	fi
 
-	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty > "${XDG_CACHE_HOME}/xorg.log" 2>&1
+	printf '=================================' >> "${XDG_CACHE_HOME}/xorg.log"
+	date >> "${XDG_CACHE_HOME}/xorg.log"
+	printf '=================================' >> "${XDG_CACHE_HOME}/xorg.log"
+
+	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty >> "${XDG_CACHE_HOME}/xorg.log" 2>&1
 }
 
 main(){
 	assign_env
 	set_umask
 	create_directories
-	source_shell
 	start_window_system
 }
 

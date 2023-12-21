@@ -6,7 +6,7 @@
 	"editor.smoothScrolling": true,
 	"editor.minimap.enabled": false,
 	"explorer.excludeGitIgnore": true,
-	"workbench.editor.showTabs": false,
+	"workbench.editor.showTabs": "single",
 	"extensions.experimental.affinity": {
 		"asvetliakov.vscode-neovim": 1
 	},
