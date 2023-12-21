@@ -19,7 +19,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.laststatus = 2
-vim.opt.colorcolumn = {120}
+vim.opt.colorcolumn = {80}
 vim.opt.hidden = true
 vim.opt.undodir = vim.fn.stdpath('data') .. '/nvim/undo'
 vim.opt.undofile = true
