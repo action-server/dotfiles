@@ -24,8 +24,8 @@ vim.opt.hidden = true
 vim.opt.undodir = vim.fn.stdpath('data') .. '/nvim/undo'
 vim.opt.undofile = true
 
-function installLazyNvim(lazyNvimPath)
-	if vim.loop.fs_stat(lazyNvimPath) then
+function install_lazynvim(lazynvim_path)
+	if vim.loop.fs_stat(lazynvim_path) then
 		return
 	end
 
@@ -34,17 +34,16 @@ function installLazyNvim(lazyNvimPath)
     'clone',
     '--filter=blob:none',
     '--branch=stable',
-		'--depth=1',
     'https://github.com/folke/lazy.nvim.git',
-    lazyNvimPath,
+    lazynvim_path,
   })
 end
 
-local lazyNvimPath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazynvim_path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
-installLazyNvim(lazyNvimPath)
+install_lazynvim(lazynvim_path)
 
-vim.opt.rtp:prepend(lazyNvimPath)
+vim.opt.rtp:prepend(lazynvim_path)
 
 plugins = {
 	'tpope/vim-commentary',
@@ -62,10 +61,9 @@ plugins = {
 	},
 	'psliwka/vim-smoothie',
 	'itchyny/lightline.vim',
-	'neovim/nvim-lspconfig',
 }
 
-require('lazy').setup(plugins, {})
+require('lazy').setup(plugins)
 
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'

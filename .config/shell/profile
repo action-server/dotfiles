@@ -18,6 +18,8 @@ assign_env(){
 	export XDG_VIDEOS_DIR="${HOME}/media/vid"
 	export XDG_TEMPLATES_DIR="${HOME}/dl"
 	export XDG_PUBLICSHARE_DIR="${HOME}/dl"
+	export XDG_DATA_DIRS="${HOME}/.local/share${XDG_DATA_DIRS:+:${XDG_DATA_DIRS}}"
+	export XDG_CONFIG_DIRS="${HOME}/.config${XDG_CONFIG_DIRS:+:${XDG_CONFIG_DIRS}}"
 
 	# Programs
 	export EDITOR='nvim'
@@ -67,7 +69,7 @@ assign_env(){
 	export VSCODE_PORTABLE="${XDG_CONFIG_HOME}/vscode"
 
 	# PATH
-	export PATH="${XDG_DATA_BIN}:${PATH}"
+	export PATH="${XDG_DATA_BIN}${PATH:+:${PATH}}"
 }
 
 set_umask(){

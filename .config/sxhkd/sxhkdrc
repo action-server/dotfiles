@@ -8,33 +8,33 @@ XF86PowerOff;
 
 # Player
 XF86AudioPlay;
-	playerctl play-pause && dunstify -h string:x-dunst-stack-tag:playerctl "Player: $(playerctl status)"
+	playerctl play && notify-send --hint="string:x-dunst-stack-tag:player" --icon='mediaplayer-app-symbolic' "Player: play"
 
 XF86AudioPause;
-	playerctl play-pause && dunstify -h string:x-dunst-stack-tag:playerctl "Player: $(playerctl status)"
+	playerctl pause --all-players && notify-send --hint="string:x-dunst-stack-tag:player" --icon='mediaplayer-app-symbolic' "Player: pause"
 
 XF86AudioNext;
-	playerctl next && dunstify -h string:x-dunst-stack-tag:playerctl "Player: next"
+	playerctl next && notify-send --hint="string:x-dunst-stack-tag:player" --icon='mediaplayer-app-symbolic' "Player: next"
 
 XF86AudioPrev;
-	playerctl previous && dunstify -h string:x-dunst-stack-tag:playerctl "Player: previous"
+	playerctl previous && notify-send --hint="string:x-dunst-stack-tag:player" --icon='mediaplayer-app-symbolic' "Player: previous"
 
 # Audio
-super + F1;
-	pactl set-sink-volume @DEFAULT_SINK@ -1% && dunstify -h string:x-dunst-stack-tag:speaker "Speaker volume: $(pamixer --get-volume)%"
+{super + F1,XF86AudioLowerVolume};
+	pamixer --decrease 1 && volume="$(pamixer --get-volume)" && notify-send --hint="string:x-dunst-stack-tag:volume" --hint="int:value:${volume}" --icon='audio-speakers-symbolic' "Volume: ${volume}%"
 
-super + F2;
-	pactl set-sink-volume @DEFAULT_SINK@ +1% && dunstify -h string:x-dunst-stack-tag:speaker "Speaker volume: $(pamixer --get-volume)%"
+{super + F2,XF86AudioRaiseVolume};
+	pamixer --increase 1 && volume="$(pamixer --get-volume)" && notify-send --hint="string:x-dunst-stack-tag:volume" --hint="int:value:${volume}" --icon='audio-speakers-symbolic' "Volume: ${volume}%"
 
 super + F3;
-	pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -h string:x-dunst-stack-tag:speaker "Speaker $(pactl get-sink-mute @DEFAULT_SINK@)"
+	pamixer --toggle-mute && notify-send --hint="string:x-dunst-stack-tag:speaker" --icon='audio-speakers-symbolic' "Speaker: $(pamixer --get-volume-human)"
 
 super + F4;
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle && dunstify -h string:x-dunst-stack-tag:microphone "Microphone $(pactl get-source-mute @DEFAULT_SOURCE@)"
+	pamixer --toggle-mute --default-source && notify-send --hint="string:x-dunst-stack-tag:microphone" --icon='audio-input-microphone-symbolic' "Microphone: $(pamixer --default-source --get-volume-human)"
 
 # Brightness
-super + F5;
-	light -U 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(light -G))%"
+{super + F5,XF86MonBrightnessDown};
+	light -U 10 && brightness="$(printf '%.0f' $(light -G))" && notify-send --hint='string:x-dunst-stack-tag:brightness' --hint="int:value:${brightness}" --icon='brightness-display-symbolic' "Brightness: ${brightness}%"
 
-super + F6;
-	light -A 10 && dunstify -h string:x-dunst-stack-tag:brightness "Brightness: $(printf '%.0f' $(light -G))%"
+{super + F6,XF86MonBrightnessUp};
+	light -A 10 && brightness="$(printf '%.0f' $(light -G))" && notify-send --hint='string:x-dunst-stack-tag:brightness' --hint="int:value:${brightness}" --icon='brightness-display-symbolic' "Brightness: ${brightness}%"

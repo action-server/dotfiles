@@ -20,6 +20,7 @@ alias \
   vim='nvim' \
   copy='xclip -selection clipboard' \
   myip='curl -L https://ipinfo.io/ip' \
+  myipv6='curl -L https://v6.ipinfo.io/ip' \
   del='trash-put' \
   cpu='cpupower frequency-info' \
   powersave='sudo cpupower frequency-set --governor powersave' \
