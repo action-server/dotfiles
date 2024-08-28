@@ -34,7 +34,8 @@ alias \
 	mycc='c99 -Wall -g -o binary' \
 	t='tmux attach' \
 	todo="${EDITOR} ${XDG_DOCUMENTS_DIR}/TODO" \
-	alarm='f(){ termdown "${1}" && notify-send "Alarm" "${2}" && yes "${2:-Alarm}" | espeak || notify-send "Alarm cancelled" "${2}"; }; f'
+	alarm='f(){ termdown "${1}" && notify-send "Alarm" "${2}" && yes "${2:-Alarm}" | espeak || notify-send "Alarm cancelled" "${2}"; }; f' \
+	random='f(){ expr "${1}" + "$RANDOM" % "${2}" }; f'
 
 # Fix
 alias \
