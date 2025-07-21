@@ -20,9 +20,8 @@ bind-key o macro-prefix
 bind-key y macro-prefix
 bind-key U show-urls
 
-auto-reload yes
-reload-threads 10
-max-downloads 10
+auto-reload no
+reload-threads 100
 download-full-page no
 prepopulate-query-feeds no
 external-url-viewer "BROWSER=open-rss-link urlscan"

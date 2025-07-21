@@ -12,8 +12,8 @@ assign_env(){
 	export XDG_DATA_BIN="${HOME}/.local/bin"
 	export XDG_DESKTOP_DIR="${HOME}/dl"
 	export XDG_DOWNLOAD_DIR="${HOME}/dl"
+	export XDG_DOCUMENTS_DIR="${HOME}/doc"
 	export XDG_MUSIC_DIR="${HOME}/media/aud"
-	export XDG_DOCUMENTS_DIR="${HOME}/media/doc"
 	export XDG_PICTURES_DIR="${HOME}/media/pic"
 	export XDG_VIDEOS_DIR="${HOME}/media/vid"
 	export XDG_TEMPLATES_DIR="${HOME}/dl"
@@ -31,8 +31,8 @@ assign_env(){
 	export TERMINAL_NEOMUTT='alacritty --option window.opacity=1.0 --command neomutt'
 	export TERMINAL_NEWSBOAT="alacritty --option window.opacity=1.0 --command newsboat --url-file ${XDG_DATA_HOME}/newsboat/urls"
 	export TERMINAL_LF='alacritty --command lf'
-	export BROWSER='flatpak run com.brave.Browser'
-	export PRIVATE_BROWSER='flatpak run com.brave.Browser --incognito'
+	export BROWSER='io.gitlab.librewolf-community'
+	export PRIVATE_BROWSER='io.gitlab.librewolf-community --private-window'
 	export TERMINAL_BROWSER='w3m'
 	export SCREENSHOT='flameshot gui'
 	export PDFREADER='zathura'

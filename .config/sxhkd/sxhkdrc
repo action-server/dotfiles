@@ -34,7 +34,7 @@ super + F4;
 
 # Brightness
 {super + F5,XF86MonBrightnessDown};
-	light -U 10 && brightness="$(printf '%.0f' $(light -G))" && notify-send --hint='string:x-dunst-stack-tag:brightness' --hint="int:value:${brightness}" --icon='brightness-display-symbolic' "Brightness: ${brightness}%"
+	light -U 5 && brightness="$(printf '%.0f' $(light -G))" && notify-send --hint='string:x-dunst-stack-tag:brightness' --hint="int:value:${brightness}" --icon='brightness-display-symbolic' "Brightness: ${brightness}%"
 
 {super + F6,XF86MonBrightnessUp};
-	light -A 10 && brightness="$(printf '%.0f' $(light -G))" && notify-send --hint='string:x-dunst-stack-tag:brightness' --hint="int:value:${brightness}" --icon='brightness-display-symbolic' "Brightness: ${brightness}%"
+	light -A 5 && brightness="$(printf '%.0f' $(light -G))" && notify-send --hint='string:x-dunst-stack-tag:brightness' --hint="int:value:${brightness}" --icon='brightness-display-symbolic' "Brightness: ${brightness}%"
