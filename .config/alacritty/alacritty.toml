@@ -1,4 +1,5 @@
-import = ["/home/admin/.config/alacritty/theme.toml"]
-
 [font]
 size = 10
+
+[general]
+import = ["./theme.toml"]
