@@ -1,0 +1,11 @@
+include "${XDG_CONFIG_HOME}/sway/conf.d/var.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/output.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/input.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/hotkey.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/main.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/bind.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/app.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/mode.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/gap.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/float.conf"
+include /etc/sway/config.d/*
