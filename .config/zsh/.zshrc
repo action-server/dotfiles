@@ -11,6 +11,9 @@ SAVEHIST=1000000
 autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
 
+# Auto cd into directory
+setopt autocd
+
 # Include dotfiles in auto completion
 setopt globdots
 

@@ -5,19 +5,15 @@
 # Description:  Shell profile
 
 assign_env(){
-	# XDG
+	# XDG Session
+	export XDG_SESSION_TYPE='wayland'
+
+	# XDG Directory
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_STATE_HOME="${HOME}/.local/state"
 	export XDG_DATA_HOME="${HOME}/.local/share"
 	export XDG_DATA_BIN="${HOME}/.local/bin"
-	export XDG_DESKTOP_DIR="${HOME}/dl"
-	export XDG_DOWNLOAD_DIR="${HOME}/dl"
-	export XDG_DOCUMENTS_DIR="${HOME}/doc"
-	export XDG_MUSIC_DIR="${HOME}/media/aud"
-	export XDG_PICTURES_DIR="${HOME}/media/pic"
-	export XDG_VIDEOS_DIR="${HOME}/media/vid"
-	export XDG_TEMPLATES_DIR="${HOME}/dl"
-	export XDG_PUBLICSHARE_DIR="${HOME}/dl"
 	export XDG_DATA_DIRS="${HOME}/.local/share${XDG_DATA_DIRS:+:${XDG_DATA_DIRS}}"
 	export XDG_CONFIG_DIRS="${HOME}/.config${XDG_CONFIG_DIRS:+:${XDG_CONFIG_DIRS}}"
 
@@ -28,11 +24,11 @@ assign_env(){
 	export TERMINAL='alacritty'
 	export TERMINAL_TMUX='alacritty --command tmux new-session -A'
 	export TERMINAL_SCRATCHPAD='alacritty --class terminal_scratchpad --command tmux new-session -A'
-	export TERMINAL_NEOMUTT='alacritty --option window.opacity=1.0 --command neomutt'
-	export TERMINAL_NEWSBOAT="alacritty --option window.opacity=1.0 --command newsboat --url-file ${XDG_DATA_HOME}/newsboat/urls"
-	export TERMINAL_LF='alacritty --command lf'
-	export BROWSER='io.gitlab.librewolf-community'
-	export PRIVATE_BROWSER='io.gitlab.librewolf-community --private-window'
+	export EMAIL='alacritty --option window.opacity=1.0 --command neomutt'
+	export RSSFEED="alacritty --option window.opacity=1.0 --command newsboat --url-file ${XDG_DATA_HOME}/newsboat/urls"
+	export FILEMANAGER='alacritty --command lf'
+	export BROWSER='io.github.ungoogled_software.ungoogled_chromium'
+	export PRIVATE_BROWSER='io.github.ungoogled_software.ungoogled_chromium --incognito'
 	export TERMINAL_BROWSER='w3m'
 	export SCREENSHOT='flameshot gui'
 	export PDFREADER='zathura'
@@ -43,10 +39,10 @@ assign_env(){
 
 	#	Fixes
 	export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/podman/podman.sock" 
-	export GTK_IM_MODULE='fcitx'
-	export QT_IM_MODULE='fcitx'
-	export SDL_IM_MODULE='fcitx'
-	export XMODIFIERS='@im=fcitx'
+	# export GTK_IM_MODULE='fcitx'
+	# export QT_IM_MODULE='fcitx'
+	# export SDL_IM_MODULE='fcitx'
+	# export XMODIFIERS='@im=fcitx'
 
 	# Home directory clean up
 	export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
@@ -61,12 +57,12 @@ assign_env(){
 	export IPYTHONDIR="${XDG_CONFIG_HOME}/jupyter"
 	export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
 	export MOZ_GTK_TITLEBAR_DECORATION='client'
-	export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 	export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
 	export PUB_CACHE="${XDG_CACHE_HOME}/pub"
 	export GOPATH="${XDG_DATA_HOME}/go"
 	export CALCHISTFILE="${XDG_CACHE_HOME}/calc_history"
 	export VSCODE_PORTABLE="${XDG_CONFIG_HOME}/vscode"
+	export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc:${XDG_CONFIG_HOME}/gtk-2.0/gtkrc.mine"
 
 	# PATH
 	export PATH="${XDG_DATA_BIN}${PATH:+:${PATH}}"
@@ -79,33 +75,45 @@ set_umask(){
 create_directories(){
 	mkdir -p "${XDG_DATA_HOME}/gnupg"
 	mkdir -p "${XDG_DATA_HOME}/shell"
-	mkdir -p "${XDG_CACHE_HOME}/zsh"
-	mkdir -p "${XDG_CONFIG_HOME}"
-	mkdir -p "${XDG_DOWNLOAD_DIR}"
-	mkdir -p "${XDG_DOCUMENTS_DIR}"
 }
 
-start_window_system(){
+start_x11(){
+	printf '%s' '==========' "$(date)" '==========' >> "${XDG_CACHE_HOME}/xorg.log"
+
+	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty >> "${XDG_CACHE_HOME}/xorg.log" 2>&1
+}
+
+start_wayland(){
+	if [ -n "${WAYLAND_DISPLAY}" ]; then
+		return
+	fi
+
+	printf '%s' '==========' "$(date)" '==========' >> "${XDG_CACHE_HOME}/sway.log"
+
+	exec sway >> "${XDG_CACHE_HOME}/sway.log" 2>&1
+}
+
+start_desktop(){
+	if [ "${XDG_VTNR}" -ne 1 ]; then
+		return
+	fi
+
 	if [ -n "${DISPLAY}" ]; then
 		return
 	fi
 
-	if [ "$(tty)" != '/dev/tty1' ]; then
-		return
-	fi
-
-	printf '=================================' >> "${XDG_CACHE_HOME}/xorg.log"
-	date >> "${XDG_CACHE_HOME}/xorg.log"
-	printf '=================================' >> "${XDG_CACHE_HOME}/xorg.log"
-
-	exec startx "${XDG_CONFIG_HOME}/x11/xinitrc" -- -keeptty >> "${XDG_CACHE_HOME}/xorg.log" 2>&1
+	case "${XDG_SESSION_TYPE}" in
+		'x11') start_x11;;
+		'wayland') start_wayland;;
+		*) return;;
+	esac
 }
 
 main(){
 	assign_env
 	set_umask
 	create_directories
-	start_window_system
+	start_desktop
 }
 
 main "${@}"

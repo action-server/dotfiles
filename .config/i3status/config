@@ -1,56 +1,60 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
 general {
         colors = true
         interval = 5
 }
 
-order += "tztime local"
+order += "cpu_temperature all"
 order += "memory"
-order += "cpu_temperature 0"
 order += "disk /"
-order += "wireless _first_"
 order += "volume master"
 order += "battery all"
+order += "tztime local"
 
-tztime local {
-        format = "%A, %d/%m/%Y, %H:%M"
-        separator_block_width = 405
-        separator = false
+wireless _first_ {
+        format_up = "󰖩"
+        format_down = "󰖪"
+}
+
+ethernet _first_ {
+        format_up = "󰌘"
+        format_down = "󰌙"
 }
 
 memory {
-        format = " %available"
+        format = "󰍛 %available"
         threshold_degraded = "1G"
-        threshold_critical = "500M"
-}
-
-cpu_temperature 0 {
-        format = " %degrees°C"
-        max_threshold = "90"
+        format_degraded = "MEMORY < %available"
 }
 
 disk "/" {
-        format = " %avail"
-        threshold_type = "bytes_avail"
-        low_threshold = 5
+        format = "󰋊 %avail"
 }
 
-wireless _first_ {
-        format_up = "直%quality"
-        format_down = "Disconnected"
+cpu_temperature all{
+        format = "󰔏 %degrees °C"
 }
 
 volume master {
-        format = "墳 %volume"
-        format_muted = "婢 %volume"
+        format = "󰕾 %volume"
+        format_muted = "󰖁 %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
 }
 
 battery all {
-        format = "%status %percentage"
-        last_full_capacity = true
-        integer_battery_capacity = true
-        status_chr = ""
-        status_bat = "" 
-        status_full = ""
-        threshold_type = "percentage"
-        low_threshold = "15"
+        format = "%status %percentage %remaining"
+				format_down = ""
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M"
 }

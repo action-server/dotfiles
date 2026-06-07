@@ -1,12 +1,12 @@
 # i3 config file (v4)
 
 include ~/.config/i3/conf.d/main.conf
-include ~/.config/i3/conf.d/float.conf
 include ~/.config/i3/conf.d/bind.conf
 include ~/.config/i3/conf.d/app.conf
 include ~/.config/i3/conf.d/mode.conf
 include ~/.config/i3/conf.d/gap.conf
 include ~/.config/i3/conf.d/bar.conf
+include ~/.config/i3/conf.d/float.conf
 
 set $mod Mod4
 
@@ -58,4 +58,15 @@ set $print 107
 set $minus 20
 set $plus 21
 
+set $f1 67
 set $f2 68
+set $f3 69
+set $f4 70
+set $f5 71
+set $f6 72
+set $f7 73
+set $f8 74
+set $f9 75
+set $f10 76
+set $f11 95
+set $f12 96

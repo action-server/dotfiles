@@ -46,8 +46,8 @@ alias \
 alias \
   ls='ls --color=auto --group-directories-first -v' \
   la='ls -A' \
-  l='ls -Alh' \
-  ll='ls -AlhF' \
+  l='ls -alh' \
+  ll='ls -alhF' \
   grep='grep --color=auto' \
   diff='diff --color=auto' \
 	free='free -h'

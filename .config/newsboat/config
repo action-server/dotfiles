@@ -24,6 +24,7 @@ auto-reload no
 reload-threads 100
 download-full-page no
 prepopulate-query-feeds no
+cleanup-on-quit yes
 external-url-viewer "BROWSER=open-rss-link urlscan"
 
 macro o set browser "setsid open-rss-link %u > /dev/null 2>&1 &"; open-in-browser-and-mark-read; up; up
